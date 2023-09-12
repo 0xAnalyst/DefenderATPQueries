@@ -1,0 +1,9 @@
+Tags:
+
+Query:
+DeviceFileEvents
+| where FolderPath contains "rclone" and InitiatingProcessParentFileName != @"Install WD Discovery"
+
+References
+
+Comments  
