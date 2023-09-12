@@ -3,4 +3,4 @@ Tags:
 DeviceProcessEvents | where ProcessVersionInfoProductName has "rclone" | where     ( ProcessCommandLine has_all ("rclone", "lsd", "remote:", @"ftp:", "mega", "--config", "--auto-confirm") )     or (         ProcessCommandLine has "--multi-thread-streams"     and ProcessCommandLine has_all ('copy', 'config', 'create', 'lsd', 'remote', 'mega', 'user', 'pass',         @'--config', @'--progress', @'--no-check-certificate', @'--ignore-existing', @'--auto-confirm',         @'--multi-thread-streams', @'--transfers', @'ftp:', @'remote:')     )     or (ProcessCommandLine  has @"\\")     or ( ProcessCommandLine has_all (@"max-age", @"stats-one-line", @"ignore-existing", @"drive-chunk-size",         @"transfers", @"include", @"checkers"))     or ( ProcessCommandLine has @"*.{xls,xlsx,doc,docx,pdf}") | where not (FolderPath has "chocolatey") 
 
 References:
-Microsoft Threat Intel Report titled *Data exfiltration using Rclone and other data synchronization tools*
+Microsoft Threat Intel Report titled Data exfiltration using Rclone and other data synchronization tools
