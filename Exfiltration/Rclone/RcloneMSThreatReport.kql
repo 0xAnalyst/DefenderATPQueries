@@ -4,3 +4,4 @@ DeviceProcessEvents | where ProcessVersionInfoProductName has "rclone" | where  
 
 References:
 Microsoft Threat Intel Report titled Data exfiltration using Rclone and other data synchronization tools
+https://github.com/mbabinski/Sigma-Rules/blob/2f12b713e8e51dc2c84fdf8c4c4d714999b6e382/2022_BlackCat_Ransomware/win_susp_process_blackcat_exfiltration.yml#L3
