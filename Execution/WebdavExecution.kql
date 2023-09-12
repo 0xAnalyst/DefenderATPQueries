@@ -1,3 +1,4 @@
+Suspicious File Execution From a WebDav Share. this was tested in my environment you can exclude based on yours 
 Tags:
 
 Query:
@@ -6,3 +7,5 @@ DeviceProcessEvents
 | where ProcessVersionInfoInternalFileName != @"VISIO.EXE" 
 
 References
+https://github.com/SigmaHQ/sigma/blob/master/rules/windows/process_creation/proc_creation_win_cmd_net_use_and_exec_combo.yml
+https://micahbabinski.medium.com/search-ms-webdav-and-chill-99c5b23ac462
