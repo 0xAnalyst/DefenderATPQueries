@@ -2,7 +2,7 @@ Tags:
 
 Query:
 DeviceFileEvents
-| where FolderPath contains "rclone" and InitiatingProcessParentFileName != @"Install WD Discovery"
+| where FolderPath contains "@"rclone\" and InitiatingProcessParentFileName != @"Install WD Discovery"
 
 References
 
