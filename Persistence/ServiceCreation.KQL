@@ -1,0 +1,14 @@
+Tags:
+
+Query:
+
+DeviceProcessEvents
+|  where ProcessVersionInfoFileDescription == @"Service Control Manager Configuration Tool" and InitiatingProcessVersionInfoCompanyName != "Cisco Systems, Inc."
+and ProcessCommandLine contains  "path" 
+| where InitiatingProcessVersionInfoProductName != @"Microsoft® Azure® AD Connect"
+
+
+References:
+
+False positives:
+This rule might generate false positives exclude the most noisy onces
