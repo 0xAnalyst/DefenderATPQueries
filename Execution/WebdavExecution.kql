@@ -1,0 +1,8 @@
+Tags:
+
+Query:
+DeviceProcessEvents
+| where ProcessCommandLine contains "DavWWWRoot" | where InitiatingProcessFileName != @"AcroRd32.exe"
+| where ProcessVersionInfoInternalFileName != @"VISIO.EXE" 
+
+References
