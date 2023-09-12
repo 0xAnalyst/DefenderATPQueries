@@ -3,7 +3,7 @@ Tags:
     - attack.execution
 Query:
     DeviceFileEvents
-        | where InitiatingProcessFileName contains "rundll32.exe" | where FolderPath contains "TfsStore"
+        | where InitiatingProcessFileName contains "rundll32.exe" | where FolderPath contains "TfsStore" // you could change it to InitiatingProcessVersionInfoInternalFileName contains "rundll"
         | where FileName endswith ".vbs" or FileName endswith'.ps1' or FileName endswith  '.lnk' or FileName endswith '.zip' or FileName endswith'.ico' or FileName endswith '.bat'
 
 
