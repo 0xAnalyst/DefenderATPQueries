@@ -1,5 +1,6 @@
 Suspicious File Execution From a WebDav Share. this was tested in my environment you can exclude based on yours 
 Tags:
+    - attack.execution
 
 Query:
 DeviceProcessEvents
