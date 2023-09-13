@@ -1,0 +1,6 @@
+Tags:
+Query:
+DeviceRegistryEvents
+|  where RegistryKey contains @"windows defender\exclusions" and InitiatingProcessCommandLine != @"svchost.exe -k GPSvcGroup" and InitiatingProcessCommandLine != @"svchost.exe -k netsvcs -p -s gpsvc" and InitiatingProcessCommandLine != @"msiexec.exe /V" and InitiatingProcessAccountName != @"system"
+| where InitiatingProcessParentId != 0
+References
