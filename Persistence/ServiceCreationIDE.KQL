@@ -1,0 +1,10 @@
+Tags:
+Query:
+IdentityDirectoryEvents
+| where ActionType contains "Service creation"
+| extend parsed =  parse_json(AdditionalFields)
+| where  parsed.ServiceCommand has_any  ('comspec', 'btobto', 'psexe', 'powershell', 'cmd', 'systemroot' 'admin$')
+
+References:
+
+False positives:
