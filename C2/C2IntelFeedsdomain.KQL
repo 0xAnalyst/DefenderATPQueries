@@ -1,0 +1,5 @@
+DeviceNetworkEvents
+| where RemoteIPType == "Public"
+| where InitiatingProcessVersionInfoProductName !in ("Sophos Anti-Virus","Google Chrome","Microsoft Edge","Firefox")
+| where RemoteUrl has_any ((externaldata(domain: string, ioc: string) [@"https://raw.githubusercontent.com/drb-ra/C2IntelFeeds/master/feeds/domainC2s-30day.csv"]
+with (format=csv, ignoreFirstRecord=true) | where ioc contains_cs "C2 Domain" | distinct domain))
