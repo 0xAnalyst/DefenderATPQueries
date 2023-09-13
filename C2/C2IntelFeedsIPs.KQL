@@ -1,0 +1,11 @@
+Tags:
+
+Query:
+DeviceNetworkEvents
+| where RemoteIPType == "Public"
+| where RemoteIP  in ((externaldata(IP: string ) [@"https://raw.githubusercontent.com/drb-ra/C2IntelFeeds/master/feeds/IPC2s-30day.csv"]
+with (format=csv, ignoreFirstRecord=true) | distinct  IP
+))
+| where InitiatingProcessFileName !in ("Google Chrome Helper","chrome.exe","firefox.exe","msedge.exe","opera.exe")
+
+References:
