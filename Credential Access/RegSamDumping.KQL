@@ -1,0 +1,7 @@
+Tags:
+Query
+DeviceProcessEvents
+| where ProcessVersionInfoFileDescription == @"Registry Console Tool"
+| where ProcessCommandLine contains "save" or ProcessCommandLine contains "export"
+| where ProcessCommandLine has_any ("sam","security","system")
+References
