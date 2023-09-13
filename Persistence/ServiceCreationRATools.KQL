@@ -1,0 +1,7 @@
+Tags:
+Query:
+DeviceEvents
+| where ActionType == 'ServiceInstalled'
+| extend parsed = parse_json(AdditionalFields)
+| where parsed.ServiceName has_any ("screenconnect","Radmin", "Splashtop", "Atera", "AmmyyAdmin", "jumpcloud", "GoToAssist", "anydesk")
+References:
