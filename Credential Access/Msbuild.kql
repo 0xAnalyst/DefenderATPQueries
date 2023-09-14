@@ -1,0 +1,7 @@
+Tags:
+Query:
+DeviceProcessEvents
+| where ProcessVersionInfoInternalFileName contains "msbuild.exe"
+| where InitiatingProcessFileName != @"devenv.exe" and InitiatingProcessVersionInfoInternalFileName != "MSBuild.exe"
+
+References:
