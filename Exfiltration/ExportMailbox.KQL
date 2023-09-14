@@ -1,0 +1,5 @@
+Tags:
+Query:
+DeviceProcessEvents
+| where InitiatingProcessFileName has_any ("powershell.exe", "pwsh.exe", "powershell_ise.exe") and ProcessCommandLine has_any ("*MailboxExportRequest*", "*-Mailbox*-ContentFilter*")
+References:
