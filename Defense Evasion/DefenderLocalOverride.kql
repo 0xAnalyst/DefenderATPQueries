@@ -1,0 +1,9 @@
+Tags:
+
+Query:
+ DeviceRegistryEvents
+| where ActionType == @"RegistryValueSet"
+| where RegistryKey == @"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Defender\Exclusions\TemporaryPaths"
+
+
+References:
