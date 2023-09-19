@@ -1,0 +1,6 @@
+Tags:
+Query:
+DeviceProcessEvents
+| where ProcessVersionInfoInternalFileName == @"Microsoft.Workflow.Compiler.exe"
+
+References:
