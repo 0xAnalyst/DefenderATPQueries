@@ -1,0 +1,6 @@
+Tags:
+Query:
+DeviceProcessEvents
+| where  FileName has_any("gpresult.exe","gprslt.exe") | where ProcessCommandLine has_any ("/z", "/v", "/r", "/x") and InitiatingProcessCommandLine !contains "Connect-ExchangeServer"
+//(process.name: "gpresult.exe" or process.pe.original_file_name == "gprslt.exe") and process.args: ("/z", "/v", "/r", "/x")
+References:
