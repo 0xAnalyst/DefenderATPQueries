@@ -1,0 +1,6 @@
+Tags
+Query:
+DeviceProcessEvents
+|  where ProcessVersionInfoFileDescription == @"Visual C# Command Line Compiler"
+| where InitiatingProcessParentFileName == @"cmd.exe" | where InitiatingProcessCommandLine !contains @"google\mFit" | where InitiatingProcessCommandLine !contains @"[Elam]::InstallWdBoot"
+  Rerences:
