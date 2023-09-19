@@ -1,0 +1,9 @@
+Tags:
+
+Query:
+DeviceProcessEvents
+| where InitiatingProcessFileName =~ "dllhost.exe"
+| where ProcessIntegrityLevel == "High"
+| where InitiatingProcessCommandLine has_any ("E9495B87-D950-4AB5-87A5-FF6D70BF3E90", "3E5FC7F9-9A51-4367-9063-A120244FBEC7", "D2E7041B-2927-42fb-8E9F-7CE93B6DC937")
+
+References:
