@@ -1,0 +1,8 @@
+Tags:
+Query:
+DeviceProcessEvents
+| where InitiatingProcessParentFileName =~ "cmd.exe" and FileName in ( "tasklist.exe","arp.exe", "at.exe", "attrib.exe", "dsquery.exe", "hostname.exe", "ipconfig.exe", "mimikatz.exe", "nbtstat.exe", "net.exe", "netsh.exe", "nslookup.exe", "ping.exe", "quser.exe", "qwinsta.exe", "reg.exe", "runas.exe", "schtasks.exe", "ssh.exe", "systeminfo.exe", "taskkill.exe", "telnet.exe", "tracert.exe", "wscript.exe", "xcopy.exe", "pscp.exe", "copy.exe", "robocopy.exe", "certutil.exe", "vssadmin.exe", "wevtutil.exe", "psexec.exe", "bcedit.exe", "wbadmin.exe", "icacls.exe", "diskpart.exe")
+and InitiatingProcessParentFileName != @"services.exe" 
+| summarize (Timestamp, ReportId)=arg_max(Timestamp, ReportId),DiscoveryCommands = dcount(ProcessCommandLine), make_set(InitiatingProcessFileName), make_set(FileName), make_set(ProcessCommandLine) by DeviceId, DeviceName, bin(Timestamp, 30m)  
+| where DiscoveryCommands >= 3
+References:
