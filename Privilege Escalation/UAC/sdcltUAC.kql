@@ -1,0 +1,2 @@
+DeviceProcessEvents
+| where (FileName ==@"sdclt.exe" or ProcessVersionInfoOriginalFileName == @"sdclt.exe")  and ProcessCommandLine contains "kickoffelev"
