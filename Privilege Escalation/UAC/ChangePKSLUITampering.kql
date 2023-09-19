@@ -1,0 +1,5 @@
+Query:
+DeviceProcessEvents
+| where InitiatingProcessParentFileName =~ "slui.exe"
+| where InitiatingProcessFileName =~ "changepk.exe"
+| where ProcessIntegrityLevel == "High"
