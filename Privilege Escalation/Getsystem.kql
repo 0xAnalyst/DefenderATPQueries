@@ -1,0 +1,8 @@
+Tags:
+
+Query:
+
+DeviceProcessEvents
+| where FileName ==@"cmd.exe" and  ProcessCommandLine has_all ( "echo", "pipe")
+
+References:
