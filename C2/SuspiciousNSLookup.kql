@@ -1,0 +1,6 @@
+Tags:
+
+Query:
+         DeviceProcessEvents
+            | where FileName contains "nslookup" and ProcessCommandLine has_any ("-querytype", "qt", "q", "-type=*")
+Refernces:
