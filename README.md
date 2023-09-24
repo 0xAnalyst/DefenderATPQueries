@@ -1,2 +1,4 @@
 # DefenderATPQueries
-Hunting Queries for Defender ATP
+This repo contains Microosft Defender Hunting queries
+
+W
