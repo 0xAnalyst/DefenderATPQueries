@@ -1,0 +1,6 @@
+Tags:
+
+Query:
+    DeviceProcessEvents
+        | where FileName contains "Dism.exe" or   ProcessVersionInfoInternalFileName == @"dism"  | where ProcessCommandLine contains "Subsystem"
+Refernces:
