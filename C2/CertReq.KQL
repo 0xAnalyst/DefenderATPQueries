@@ -1,0 +1,7 @@
+Tags:
+
+Query:
+      DeviceProcessEvents
+          | where (FileName contains "CertReq.exe" or ProcessVersionInfoInternalFileName contains "CertReq.exe") and ProcessCommandLine contains "Post"
+References:
+
