@@ -1,0 +1,8 @@
+Tags:
+
+Query:    
+    DeviceProcessEvents
+       | where ProcessCommandLine contains "*:" and ProcessCommandLine has_any("-L","-P", "-R", "-pw", "-ssh")| where InitiatingProcessFolderPath != @"/bin/bash" and  FolderPath != @"/bin/bash"
+
+References:
+
