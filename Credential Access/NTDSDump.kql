@@ -1,0 +1,9 @@
+Tags:
+
+Query:
+DeviceFileEvents
+| where (InitiatingProcessFileName  has_any ("Cmd.Exe", "PowerShell.EXE", "XCOPY.EXE") and InitiatingProcessCommandLine  has_any("copy", "xcopy", "Copy-Item", "move", "cp", "mv")) or InitiatingProcessFileName contains "esentutl.exe"
+| where InitiatingProcessCommandLine  has_any("ntds.dit", "SAM", "HarddiskVolumeShadowCopy", "system32/config/SAM")
+| where InitiatingProcessParentFileName != @"SenseIR.exe"
+
+
