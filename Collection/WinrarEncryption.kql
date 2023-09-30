@@ -1,0 +1,7 @@
+Tags:
+
+Query:
+DeviceProcessEvents
+| where ((FileName == @"rar.exe" or  ProcessVersionInfoInternalFileName == @"WinRAR" )  and ProcessCommandLine has_any ("-hp*", "-p*", "-dw", "-tb", "-ta", "/hp*", "/p*", "/dw", "/tb", "/ta")) or  (FileName in("7z.exe", "7za.exe") and ProcessCommandLine has_any("-p*", "-sdel") )
+
+References:
