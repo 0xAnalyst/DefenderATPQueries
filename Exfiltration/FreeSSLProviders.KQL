@@ -1,0 +1,6 @@
+Tags:
+Query:
+DeviceNetworkEvents
+| where RemoteUrl has_any ("letsencrypt.org", "sslforfree.com", "zerossl.com", "freessl.org")
+| where InitiatingProcessFolderPath !startswith @"c:\program files" | where InitiatingProcessParentFileName != @"SenseIR.exe" and InitiatingProcessVersionInfoProductName != @"Windows ACME Simple (WACS)" and InitiatingProcessVersionInfoCompanyName != @"Wouter Tinus and many others" 
+References:
