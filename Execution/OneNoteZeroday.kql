@@ -1,0 +1,6 @@
+Tags:
+Query:
+DeviceProcessEvents
+| where InitiatingProcessFileName contains "onenote"  and FileName !in ("crashpad_handler.exe", "conhost.exe","MSOSYNC.EXE","msedge.exe","msedgewebview2.exe","chrome.exe","firefox.exe","opera.exe","brave.exe","iexplore.exe","WINWORD.EXE", "EXCEL.EXE", "POWERPNT.EXE","AcroRd32.exe","Acrobat.exe","ONENOTEM.exe","OUTLOOK.exe","ai.exe","Teams.exe","notepad.exe","protocolhandler.exe","ONENOTE.EXE","splwow64.exe")
+|  where  FileName != @"ONENOTEM.EXE" and  FolderPath != @"/usr/bin/codesign" and  FolderPath != @"C:\Windows\System32\DWWIN.EXE"
+References:
