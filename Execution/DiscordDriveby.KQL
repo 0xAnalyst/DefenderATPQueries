@@ -5,4 +5,6 @@ Query:
 DeviceFileEvents
 | where isnotempty(FileOriginUrl)
 | where FileOriginUrl contains "cdn.discordapp.com/attachments/" or FileOriginReferrerUrl contains "cdn.discordapp.com/attachments/" | where FileName contains "pass" 
+
+
 References:
