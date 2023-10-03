@@ -1,15 +1,15 @@
 Tags:
 
 Queries:
-  DeviceImageLoadEvents
-  | where FileName contains "system.management.automation.dll"
-  | where InitiatingProcessFileName != @"powershell.exe"
-  | where InitiatingProcessFileName != @"monitoringhost.exe"
-  | where InitiatingProcessFileName != @"mscorsvw.exe"
-  | where InitiatingProcessFileName != @"wa_3rd_party_host_32.exe"
-  | where InitiatingProcessFileName != @"lenovo.modern.imcontroller.pluginhost.companionapp.exe"
-  | where InitiatingProcessFileName != @"sdiagnhost.exe"
-  | where InitiatingProcessFolderPath has_any ("temp", "users")
+   DeviceImageLoadEvents
+      | where FileName contains "system.management.automation"
+      | where InitiatingProcessFileName != @"powershell.exe"
+      | where InitiatingProcessFileName != @"monitoringhost.exe"
+      | where InitiatingProcessFileName != @"mscorsvw.exe"
+      | where InitiatingProcessFileName != @"wa_3rd_party_host_32.exe"
+      | where InitiatingProcessFileName != @"lenovo.modern.imcontroller.pluginhost.companionapp.exe"
+      | where InitiatingProcessFileName != @"sdiagnhost.exe"
+      | where InitiatingProcessFolderPath has_any ("temp", "users")
 
 References:
 
