@@ -1,0 +1,10 @@
+Tags:
+
+Query:
+  DeviceProcessEvents
+    | where InitiatingProcessFileName contains "rundll"   or InitiatingProcessVersionInfoInternalFileName == @"rundll"
+    | where FileName  has_any ("cmd.exe","powershell", "powershell_ise")  and InitiatingProcessCommandLine !contains @"zzzzInvokeManagedCustomActionOutOfProc"
+References:
+
+
+Notes:
