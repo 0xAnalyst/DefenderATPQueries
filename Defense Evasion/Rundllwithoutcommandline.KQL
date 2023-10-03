@@ -1,0 +1,9 @@
+Tags:
+
+Query:
+DeviceProcessEvents
+| where FileName == "rundll32.exe" or ProcessVersionInfoOriginalFileName == @"RUNDLL32.EXE"| where ProcessCommandLine matches regex "^$"
+
+References:
+
+Notes:
