@@ -1,0 +1,14 @@
+Tags:
+
+Query:
+    let suspiciousprocesses = pack_array ("cmd.exe","powershell","bitsadmin.exe","certutil.exe","bginfo.exe",'bash.exe''bitsadmin.exe','cmd.exe','netstat.exe','nltest.exe','ping.exe', 'powershell.exe','pwsh.exe','regsvr32.exe','rundll32.exe','sh.exe','systeminfo.exe','tasklist.exe','wsl.exe');
+    DeviceProcessEvents 
+      | where Timestamp >= ago(30d)
+      | where InitiatingProcessFileName in~ ("sqlservr.exe", "sqlagent.exe", "sqlps.exe", "launchpad.exe")
+      | where ProcessCommandLine has_any  (suspiciousprocesses) and ProcessCommandLine !contains @"MSSQL13.SQL1\MSSQL\Files\Scripts\"
+      | where ProcessCommandLine != @"""cmd.exe"" /c rename C:\Windows\ServiceProfiles\NetworkService\HaImportDatabaseName.mdf HaDatabaseName.mdf"
+      | where ProcessCommandLine != @"""cmd.exe"" /c rename C:\Windows\ServiceProfiles\NetworkService\HaImportDatabaseName_log.ldf HaDatabaseName_log.ldf"
+
+
+References:
+  https://detection.fyi/sigmahq/sigma/windows/process_creation/proc_creation_win_mssql_susp_child_process/
