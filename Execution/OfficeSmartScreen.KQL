@@ -1,0 +1,11 @@
+Tags:
+
+Query:
+DeviceEvents
+| where ActionType == "SmartScreenAppWarning" //where ActionType == 'SmartScreenUserOverride' for when users ignored the warning and proceeded to execute the file
+| extend data = parse_json(AdditionalFields)
+| extend Experience = parse_json(data).Experience
+| where FileName !in () //Exclusions by filename goes here
+| project Timestamp, DeviceName, ActionType, FileName, InitiatingProcessFileName, Experience, InitiatingProcessAccountUpn, DeviceId, ReportId
+
+References
