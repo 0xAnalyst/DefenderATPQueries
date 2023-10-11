@@ -1,0 +1,9 @@
+Tags:
+
+Query:
+DeviceFileEvents
+|  where ActionType == @"FileCreated" and FolderPath contains "music" and FolderPath contains "users" and FileName endswith ".exe"
+and  InitiatingProcessAccountName != @"system" and InitiatingProcessVersionInfoCompanyName != @"Parallels International GmbH" 
+| invoke FileProfile()
+| where GlobalPrevalence <= 10  
+References:
