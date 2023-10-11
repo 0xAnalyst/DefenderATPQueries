@@ -1,0 +1,10 @@
+Tags:
+
+Query:
+
+ DeviceEvents  | where ActionType == 'WmiBindEventFilterToConsumer'
+ | where AdditionalFields !contains "SCM Event Log Filter" and AdditionalFields !contains "CCM_PolicyReplicationConsumer"
+| extend parsed =  parse_json(AdditionalFields)
+| where parsed.Namespace == @"//./root/subscription" and  parsed.PossibleCause !contains @"Win32_Processor" and  parsed.Ess != @"DellCommandPowerManagerAlertEventFilter" and  parsed.Ess != @"DellCommandPowerManagerPolicyChangeEventFilter"
+
+References:
