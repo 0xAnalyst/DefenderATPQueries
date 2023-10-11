@@ -1,0 +1,15 @@
+Tags:
+
+
+Query:
+
+DeviceInfo
+| where IsInternetFacing 
+| extend parsed = parse_json(AdditionalFields)
+| where isnotempty(parsed.InternetFacingPublicScannedIp)
+| project DeviceName, parsed.InternetFacingLocalIp, parsed.InternetFacingPublicScannedIp
+
+
+References
+
+
