@@ -1,6 +1,9 @@
 # DefenderATPQueries
-This repo contains Microosft Defender Hunting queries. This queries were added based on the telmetry provided by Defender and where 
-The default ruleset by Microsoft doens't alert on the activity. 
+This repo contains Microosft Defender Hunting queries. This queries were added based on the telmetry provided by Defender
 
-# Some of the queries were driven from Elastic Ruleset or other Github based detections rules
+# Some of the queries here were driven from
+  Sigma Rules 
+    https://github.com/SigmaHQ/sigma 
+    
+  
 
