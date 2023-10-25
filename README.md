@@ -39,8 +39,6 @@
   <p align="center">
     project_description
     <br />
-    <br />
-    <br />
     <a href="https://github.com/0xAnalyst/DefenderATPQueries/issues">Report Bug</a>
     ·
     <a href="https://github.com/0xAnalyst/DefenderATPQueries/issues">Request Feature</a>
