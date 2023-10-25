@@ -41,12 +41,6 @@
 ## About The Project
 
 This repo contains Microosft Defender Hunting queries. This queries were added based on the telmetry provided by Defender
-
-
-### Built With
-
-* [![Next][Next.js]][Next-url]
-<!-- ROADMAP -->
 ## Roadmap
 
 - [ ] Feature 1
