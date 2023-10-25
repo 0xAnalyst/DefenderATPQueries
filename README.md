@@ -68,8 +68,8 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 <!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments
 
-* []()
-* []()
+* []() https://github.com/SigmaHQ/sigma 
+* []() https://github.com/FalconForceTeam/FalconFriday
 * []()
 
 
