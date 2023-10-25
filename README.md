@@ -40,7 +40,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-This repo contains Microosft Defender Hunting queries. This queries were added based on the telmetry provided by Defender
+This repo contains Microosft Defender Hunting queries. This queries were added based on the telmetry provided by Defender that either wrote myself or droved ideas from all other amazing community members that were aknowledged below. feel free to suggesst additions to this repo
 ## Roadmap
 
 - [ ] Feature 1
