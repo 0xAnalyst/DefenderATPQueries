@@ -30,10 +30,6 @@
 
 <div align="center">
 <h3 align="center">Microsoft Defender ATP Hunting Queries</h3>
-
-  <p align="center">
-    project_description
-    <br />
     <a href="https://github.com/0xAnalyst/DefenderATPQueries/issues">Report Bug</a>
     ·
     <a href="https://github.com/0xAnalyst/DefenderATPQueries/issues">Request Feature</a>
