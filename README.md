@@ -78,8 +78,6 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
-
 This repo contains Microosft Defender Hunting queries. This queries were added based on the telmetry provided by Defender
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
