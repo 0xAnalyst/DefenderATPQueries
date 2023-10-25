@@ -1,13 +1,4 @@
-# DefenderATPQueries
-This repo contains Microosft Defender Hunting queries. This queries were added based on the telmetry provided by Defender
-
-# Some of the queries here were driven from
-  Sigma Rules 
-    https://github.com/SigmaHQ/sigma 
-    
-
-
-  <!-- Improved compatibility of back to top link: See: https://github.com/othneildrew/Best-README-Template/pull/73 -->
+<!-- Improved compatibility of back to top link: See: https://github.com/othneildrew/Best-README-Template/pull/73 -->
 <a name="readme-top"></a>
 <!--
 *** Thanks for checking out the Best-README-Template. If you have a suggestion
