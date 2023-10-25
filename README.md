@@ -40,7 +40,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-This repo contains Microosft Defender Hunting queries. This queries were added based on the telmetry provided by Defender that either wrote myself or droved ideas from all other amazing community members that were aknowledged below. feel free to suggesst additions to this repo
+This repository comprises Microsoft Defender Hunting queries. These queries have been developed using telemetry data provided by Defender. They are a result of my own work and inspiration drawn from the contributions of the exceptional community members acknowledged below. Please don't hesitate to propose any additional queries for inclusion in this repository.
 ## Roadmap
 
 - [ ] Feature 1
