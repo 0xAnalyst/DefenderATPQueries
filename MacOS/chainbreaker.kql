@@ -1,0 +1,5 @@
+Tags:
+
+Query:
+DeviceFileEvents
+| where FolderPath contains @"/private/var/db/SystemKey"
