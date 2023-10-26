@@ -68,7 +68,8 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 * []() https://github.com/SigmaHQ/sigma 
 * []() https://github.com/FalconForceTeam/FalconFriday
-* []()
+* []()https://detection.fyi/
+* []()https://github.com/elastic/detection-rules/tree/main/rules
 
 
 
