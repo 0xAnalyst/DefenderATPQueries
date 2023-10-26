@@ -1,0 +1,9 @@
+Tags:
+
+Query:
+DeviceProcessEvents
+| where FileName has_any ("dscl", "dseditgroup")
+| where ProcessCommandLine  contains "admin" and ProcessCommandLine has_any ("-a","-append")
+| where InitiatingProcessParentFileName != @"jamf" | where InitiatingProcessCommandLine !contains @"com.jamfsoftware"
+
+References:
