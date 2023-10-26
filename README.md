@@ -43,10 +43,8 @@
 This repository comprises Microsoft Defender Hunting queries. These queries have been developed using telemetry data provided by Defender ATP. They are a result of my own work and inspiration drawn from the contributions of the exceptional community members acknowledged below. Please don't hesitate to propose any additional queries for inclusion in this repository.
 ## Roadmap
 
-- [ ] Feature 1
-- [ ] Feature 2
-- [ ] Feature 3
-    - [ ] Nested Feature
+- [ ] Add detections based on ASR rules
+- [ ] Add detections based on windows API's logged
 
 See the [open issues](https://github.com/0xAnalyst/DefenderATPQueries/issues) for a full list of proposed features (and known issues).
 
