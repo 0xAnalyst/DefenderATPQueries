@@ -1,0 +1,13 @@
+Tags:
+
+Query:
+
+union DeviceFileEvents, DeviceProcessEvents
+| where Timestamp >= ago(7d) 
+|  where  FileName == "cp"
+and ProcessCommandLine contains "Users" and ProcessCommandLine contains "tmp" and FileName != "vpndownloader"  and ProcessCommandLine !contains "generic/kernel/drivers/regulator/userspace-consumer.ko"
+| where ProcessCommandLine != "/bin/cp /Library/Preferences/SystemConfiguration/preferences.plist /Library/Preferences/SystemConfiguration/preferences.plist.old"
+| where InitiatingProcessCommandLine !contains @"Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework"
+
+
+Resoruces:
