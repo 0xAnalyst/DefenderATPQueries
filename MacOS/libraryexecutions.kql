@@ -1,0 +1,9 @@
+Tags:
+
+Query:
+
+union DeviceProcessEvents, DeviceInfo
+| where Timestamp >= ago(7d) and  OSPlatform == "macOS" 
+| where InitiatingProcessCommandLine contains @"/Library/Scripts" 
+
+References:
