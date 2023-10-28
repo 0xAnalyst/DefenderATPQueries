@@ -84,7 +84,7 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 [issues-shield]: https://img.shields.io/github/issues/0xAnalyst/DefenderATPQueries.svg?style=for-the-badge
 [issues-url]: https://github.com/0xAnalyst/DefenderATPQueries/issues
 [license-shield]: https://img.shields.io/github/license/0xAnalyst/DefenderATPQueries.svg?style=for-the-badge
-[license-url]: https://github.com/0xAnalyst/DefenderATPQueries/blob/master/LICENSE.txt
+[license-url]: https://github.com/0xAnalyst/DefenderATPQueries/blob/master/LICENSE
 [product-screenshot]: images/screenshot.png
 [Next.js]: https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white
 [Next-url]: https://nextjs.org/
