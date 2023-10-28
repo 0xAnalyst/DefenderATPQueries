@@ -78,7 +78,7 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 [contributors-shield]: https://img.shields.io/github/contributors/0xAnalyst/DefenderATPQueries.svg?style=for-the-badge
 [contributors-url]: https://github.com/0xAnalyst/DefenderATPQueries/graphs/contributors
 [forks-shield]: https://img.shields.io/github/forks/0xAnalyst/DefenderATPQueries.svg?style=for-the-badge
-[forks-url]: https://github.com/0xAnalyst/DefenderATPQueries/network/members
+[forks-url]: https://github.com/0xAnalyst/DefenderATPQueries/forks
 [stars-shield]: https://img.shields.io/github/stars/0xAnalyst/DefenderATPQueries.svg?style=for-the-badge
 [stars-url]: https://github.com/0xAnalyst/DefenderATPQueries/stargazers
 [issues-shield]: https://img.shields.io/github/issues/0xAnalyst/DefenderATPQueries.svg?style=for-the-badge
