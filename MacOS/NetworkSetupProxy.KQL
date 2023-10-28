@@ -5,3 +5,4 @@ DeviceProcessEvents
 | where FileName == @"networksetup" and ProcessCommandLine has_any ("setwebproxy","setsecurewebproxy","setautoproxyurl")
 
 References:
+https://github.com/elastic/detection-rules/blob/e9baebc2bc18f90ae16501613cd9521a16a38ad7/rules/macos/credential_access_mitm_localhost_webproxy.toml
