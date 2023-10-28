@@ -1,0 +1,9 @@
+Tags:
+
+Query:
+DeviceProcessEvents
+| where FileName contains "sqlite" and ProcessCommandLine contains "com.apple.TCC/TCC.db"
+
+Reference:
+https://www.loobins.io/binaries/sqlite3/
+https://github.com/elastic/detection-rules/blob/e9baebc2bc18f90ae16501613cd9521a16a38ad7/rules/macos/defense_evasion_privacy_controls_tcc_database_modification.toml
