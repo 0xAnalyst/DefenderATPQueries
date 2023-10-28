@@ -2,8 +2,8 @@ Tags:
 
 Query:
 
-union DeviceProcessEvents, DeviceInfo
-| where Timestamp >= ago(7d) and  OSPlatform == "macOS" 
+union DeviceProcessEvents
+| where Timestamp >= ago(7d)
 | where InitiatingProcessCommandLine contains @"/Library/Scripts" 
 
 References:
