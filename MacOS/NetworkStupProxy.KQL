@@ -1,0 +1,7 @@
+Tags:
+
+Query:
+DeviceProcessEvents
+| where FileName == @"networksetup" and ProcessCommandLine has_any ("setwebproxy","setsecurewebproxy","setautoproxyurl")
+
+References:
