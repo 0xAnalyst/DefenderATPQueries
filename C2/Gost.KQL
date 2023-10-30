@@ -1,0 +1,8 @@
+Tags:
+
+Query:
+DeviceProcessEvents
+| where ProcessCommandLine matches regex "\\-(?i)[f,l]\\=.*:\\/\\/"
+
+References:
+https://github.com/ginuerzh/gost
