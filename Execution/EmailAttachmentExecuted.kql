@@ -1,0 +1,12 @@
+Tags:
+
+Query:
+EmailAttachmentInfo
+| where isnotempty(SHA256) 
+|join (
+DeviceProcessEvents
+| project DeviceName,FileName, SHA256
+) on SHA256
+| project Timestamp, DeviceName , FileName, SHA256, SenderFromAddress, RecipientEmailAddress
+
+References:
