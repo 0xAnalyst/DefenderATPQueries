@@ -1,0 +1,7 @@
+Tags:
+
+Query:
+DeviceProcessEvents
+| where InitiatingProcessFileName contains "mshta.exe"
+and ProcessCommandLine  has_any ("javascript", "about" , "vbscript", "http", "ftp")
+Refernces:
