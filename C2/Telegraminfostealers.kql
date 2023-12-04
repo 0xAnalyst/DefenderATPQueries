@@ -1,0 +1,12 @@
+Tags:
+
+Query:
+DeviceNetworkEvents
+| where RemoteUrl contains "api.telegram.org"
+| where InitiatingProcessFileName !in ("chrome.exe","Telegram.exe","firefox.exe","msedge.exe","slack.exe","OUTLOOK.EXE","brave.exe","Postman.exe")
+| where InitiatingProcessVersionInfoFileDescription != @"Opera Internet Browser"
+| where InitiatingProcessFileName != @"Google Chrome Helper"
+| where InitiatingProcessFileName != @"Opera Helper"
+| where InitiatingProcessFileName != @"com.apple.WebKit.Networking"
+
+Rferences:
