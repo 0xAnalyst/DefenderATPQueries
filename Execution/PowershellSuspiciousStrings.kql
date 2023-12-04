@@ -1,0 +1,9 @@
+Tags:
+
+Query:
+DeviceProcessEvents
+| where FileName in~ ("powershell.exe", "powershell_ise.exe")
+| where ProcessCommandLine has_any("Net.WebClient","DownloadFile","Invoke-WebRequest", "Invoke-Shellcode", "http","IEX","BitsTransfer","mpcmdrun.exe","downloadstring","Invoke-Expression","Invoke","-e","[System.Convert]::FromBase64String()", "-en","-noni", "-nop", "mimikatz")
+|  where InitiatingProcessFileName != @"CcmExec.exe" | where InitiatingProcessVersionInfoCompanyName != @"Slack Technologies Inc." | where InitiatingProcessVersionInfoFileDescription != @"Snow Inventory Agent for Windows"
+
+References:
