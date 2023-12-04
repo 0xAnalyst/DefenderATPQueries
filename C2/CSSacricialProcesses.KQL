@@ -1,0 +1,11 @@
+Tags:
+
+Query:
+
+DeviceProcessEvents
+| where FileName has_any ("rundll32.exe","werfault.exe", "searchprotocolhost.exe", "gpupdate.exe", "regsvr32.exe", "svchost.exe", "msiexec.exe")
+| where ProcessCommandLine matches regex "^$" 
+
+
+References:
+
