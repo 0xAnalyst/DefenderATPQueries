@@ -1,0 +1,15 @@
+name: C2 Simon Tatham tools reaching the internet
+index_type: events
+description: Detects the usage of tools signed by Simon Tatham such as putty.exe that reaches the internet.
+references: n/a
+tags: c2
+search_query:  
+let certificates = 
+DeviceFileCertificateInfo
+| where Signer has_any ('simon')
+| distinct SHA1
+;
+DeviceNetworkEvents
+| where InitiatingProcessSHA1  in~ (certificates) and RemoteIPType == "Public"
+
+on_hit: alert
