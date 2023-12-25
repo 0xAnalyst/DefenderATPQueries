@@ -1,0 +1,13 @@
+name: Exfiltration, Ransomware Remote Admin Tools
+description: Detects existence of common ransomware tools used by threat groups
+references:
+tags: Exfiltration
+search_query: (let certificates = 
+DeviceFileCertificateInfo
+| where Signer has_any ('Ammyy','Atera Networks', 'Barracuda Networks', 'CONTINUUM MANAGED', 'ScreenConnect', 'DameWare Development', 'Datto Inc', 'Kaseya', 'Level Software, Inc','MSPBytes', 'N-Able Technologies', 'netsupport', 'ninjarmm', 
+'Bravura Software LLC', 'Panorama9', 'pcvisit software ag', 'MMSoft Design', 'famatech', 'idrive', 'Remote Utilities', 'Krämer IT Solutions GmbH', 'Splashtop', 'Nanosystems S.R.L.', 'Servably, Inc.', 'AmidaWare', 'Duc Fabulous')
+| distinct SHA1
+;
+DeviceProcessEvents
+| where SHA1 in~ (certificates) 
+on_hit: alert
