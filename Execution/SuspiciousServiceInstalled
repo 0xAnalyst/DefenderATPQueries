@@ -1,0 +1,8 @@
+Tags:
+
+Query:
+DeviceEvents
+| where ActionType == "ServiceInstalled"
+| where FolderPath !contains "C:\\ProgramData" and FolderPath !contains "C:\\Windows" and FolderPath !contains "C:\\Program File" and FolderPath !contains "\\systemroot\\" and FolderPath !contains "%systemroot%"
+| where InitiatingProcessFolderPath !contains "C:\\ProgramData" and InitiatingProcessFolderPath !contains "C:\\Program File" and InitiatingProcessFolderPath !contains "C:\\Windows"
+References:
