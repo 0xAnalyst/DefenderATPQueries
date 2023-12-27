@@ -1,0 +1,9 @@
+name: Privilege Escalation, Persistence T1546.011 Application shimming via sdbinst.exe
+description: Detects the usage of the utility sdbinst.exe that can set registry key for application shimming.
+references: https://attack.mitre.org/techniques/T1546/011/, https://www.fireeye.com/blog/threat-research/2017/05/fin7-shim-databases-persistence.html
+tags: privilege_escalation, persistence, t1546.011
+search_query: 
+(DeviceProcessEvents
+| where ProcessVersionInfoInternalFileName =~ "sdbinst.exe" 
+| where  not(ProcessCommandLine has_all ("-m","-bg")) | where ProcessCommandLine != @"""sdbinst.exe"" -mm"
+| where ProcessCommandLine !contains "iisexpressshim.sdb")
