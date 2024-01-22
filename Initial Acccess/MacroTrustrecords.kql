@@ -1,0 +1,9 @@
+name: Initial Access, Indicators of Macro document enabled/trusted by user
+description: Detects users enabling a macro based file which could indicate a spearphishing attachment
+references: https://attack.mitre.org/techniques/T1566/001/,https://az4n6.blogspot.com/2016/02/more-on-trust-records-macros-and.html
+tags: Initial Access, T1566.001
+search_query: 
+(DeviceRegistryEvents
+| where RegistryKey contains "TrustRecords")
+Notes:
+This will alert on  some legit users, you need to modify it to have proper exclusions
