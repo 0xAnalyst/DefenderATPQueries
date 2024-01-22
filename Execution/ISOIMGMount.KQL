@@ -1,0 +1,7 @@
+name: Initial Access, ISO/IMG File Mounted 
+description: Detects the mounting of an img file which could indicate a spearphishing attachment
+references: https://attack.mitre.org/techniques/T1566/001/
+tags: Initial Access, T1566
+search_query: 
+(DeviceFileEvents
+| where FileName endswith ".iso.lnk" or FileName endswith ".img.lnk")
