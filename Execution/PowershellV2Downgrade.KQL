@@ -1,0 +1,16 @@
+name: Execution, Potential PowerShell Downgrade Attack
+description: Detects PowerShell downgrade attack through commandline analysis
+references: https://detection.fyi/sigmahq/sigma/windows/process_creation/proc_creation_win_powershell_downgrade_attack
+tags: Execution, T1059.001
+search_query: 
+(DeviceProcessEvents
+| where FileName in~ ("powershell.exe", "powershell_ise.exe")
+| where ProcessCommandLine has "-v 2"
+   or ProcessCommandLine has "-v 2.0"
+   or ProcessCommandLine has "-version 2"
+   or  ProcessCommandLine has "-versi 2"
+   or ProcessCommandLine has "-vers 2"
+   or ProcessCommandLine has "-ver 2"
+  or ProcessCommandLine has "-ve 2"
+  or ProcessCommandLine has "-ve 2"
+   or ProcessCommandLine has "-version 2.0"| where InitiatingProcessFileName != "MonitoringHost.exe")
