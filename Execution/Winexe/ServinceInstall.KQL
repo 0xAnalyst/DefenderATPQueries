@@ -1,0 +1,4 @@
+DeviceEvents
+| where ActionType == 'ServiceInstalled'
+| extend parsed = parse_json(AdditionalFields)
+| where parsed.ServiceName has ("winexesvc")
