@@ -1,0 +1,14 @@
+name: Execution, Indicators of usage of winexe for lateral movement
+description: Detects usage of winexe through named pipe creation
+references: https://attack.mitre.org/software/S0191/,https://community.netwitness.com/t5/netwitness-community-blog/detecting-lateral-movement-in-rsa-netwitness-winexe/ba-p/520480
+tags: Execution, S0191
+search_query: 
+(DeviceEvents
+| where ActionType == "NamedPipeEvent"
+| extend ParsedFields=parse_json(AdditionalFields)
+| where ParsedFields.FileOperation == "File created"
+| where ParsedFields.PipeName has_any ("ahexec", "wmcex")
+Notes:
+
+
+
