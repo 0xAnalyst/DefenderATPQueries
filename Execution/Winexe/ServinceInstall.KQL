@@ -1,4 +1,12 @@
-DeviceEvents
+
+name: Execution, Indicators of usage of winexe for lateral movement
+description: Detects service install of winexe remote admion tool
+references: https://attack.mitre.org/software/S0191/,https://community.netwitness.com/t5/netwitness-community-blog/detecting-lateral-movement-in-rsa-netwitness-winexe/ba-p/520480
+tags: Execution, S0191
+search_query: 
+(DeviceEvents
 | where ActionType == 'ServiceInstalled'
 | extend parsed = parse_json(AdditionalFields)
 | where parsed.ServiceName has ("winexesvc")
+Notes:
+
