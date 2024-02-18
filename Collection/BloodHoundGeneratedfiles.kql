@@ -1,0 +1,10 @@
+
+name: Collection, Indicators of bloodhound usage within the environment
+description: Detects file dropped by BloodHound/SharpHound that contains AD information 
+references: https://academy.hackthebox.com/course/preview/active-directory-bloodhound/bloodhound--data-collection
+tags: Collection, t1087.001
+search_query: 
+(DeviceFileEvents
+| where FileName contains "users.json" or  FileName contains "*computers.jons" or  FileName contains "*groups.json" or  FileName contains "*ous.json" or  FileName contains "*domains.json" or  FileName contains "bloodhound" or  FileName contains "gpos.json" | where FileName != @"bloodhound.js"| where FileName != @"bloodhoundDropdown.js"
+)
+Notes:
