@@ -1,0 +1,15 @@
+name: Collection, Indicators of Keylogging through powershell
+description:  Powershell might be used to intercept user's type keystrokes
+references:  https://detection.fyi/sigmahq/sigma/windows/powershell/powershell_script/posh_ps_keylogging/
+tags: Collection, T1056.001
+search_query: 
+(DeviceEvents
+| where ActionType contains "PowerShellCommand"
+| extend parsed = parse_json(AdditionalFields)
+| where parsed.Command contains "GetAsyncKeyState" or parsed.Command contains "NtUserGetAsyncKeyState" or parsed.Command contains "GetKeyboardState" or parsed.Command contains "Get-Keystrokes" or parsed.Command contains"SetWindowsHook" or parsed.Command contains "NtUserSetWindowsHook"
+or parsed.Command contains "GetWindowText" or parsed.Command contains "GetForegroundWindow"
+| where InitiatingProcessParentFileName !in ("MicrosoftDependencyAgent.exe","slack.exe","MonitoringHost.exe","Slack.exe")
+| where InitiatingProcessVersionInfoProductName != @"Microsoft Monitoring Agent"
+)
+Notes:
+
