@@ -1,0 +1,9 @@
+name: Defense Evasion, Indicators Shadow Copy Deletion
+description:  Shadow Copies deletion using Vssadmin or Wmic
+references:  https://www.slideshare.net/heirhabarov/hunting-for-credentials-dumping-in-windows-environment
+tags: Defense Evasion, T1490,T1070
+search_query: 
+(DeviceProcessEvents
+| where FileName has_any ("vssadmin.exe","wmic.exe") and (ProcessCommandLine contains "shadow" and ProcessCommandLine contains "delete")
+)
+Notes:
