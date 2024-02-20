@@ -1,0 +1,10 @@
+name: Credential Access, NTLM stealing Over SMB
+description:  Outgoing Traffic to the internet which might indicate NTLM stealing
+references:  
+tags: Credential Access, 
+search_query: 
+(DeviceNetworkEvents
+| where ActionType == @"ConnectionSuccess"
+| where (RemotePort==445 or RemotePort == 135)and RemoteIPType == @"Public" and InitiatingProcessVersionInfoCompanyName != @"VMware, Inc." and RemoteUrl !contains "google"  
+)
+Notes:
