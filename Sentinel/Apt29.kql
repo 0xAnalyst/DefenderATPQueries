@@ -7,4 +7,4 @@ OfficeActivity
 OfficeActivity
 | where   UserId endswith @"onmicrosoft.com" and UserId !endswith @"Yourdomain.onmicrosoft.com"
 
-Filter for false positive 
+Filter for false positives
