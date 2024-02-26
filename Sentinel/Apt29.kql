@@ -1,0 +1,4 @@
+References:https://www.microsoft.com/en-us/security/blog/2023/08/02/midnight-blizzard-conducts-targeted-social-engineering-over-microsoft-teams/
+
+OfficeActivity
+| where UserId has_any ("msonlineservicesteam","mlcrosoftaccounts","msftonlineservices","msonlineteam","msftservice","noreplyteam","accounteam","teamsprotection","identityverification","msftprotection","accountsverification","azuresecuritycenter")
