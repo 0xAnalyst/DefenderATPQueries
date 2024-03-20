@@ -1,0 +1,4 @@
+DeviceProcessEvents
+| where ProcessVersionInfoFileDescription
+ contains "Registry Console Tool" and ProcessCommandLine contains  "AppInit_DLLs"
+   
