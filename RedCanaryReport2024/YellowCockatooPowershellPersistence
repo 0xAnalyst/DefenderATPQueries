@@ -1,0 +1,3 @@
+DeviceFileEvents
+| where InitiatingProcessFileName contains  "powershell.exe"
+and FolderPath contains @"programs\startup"
