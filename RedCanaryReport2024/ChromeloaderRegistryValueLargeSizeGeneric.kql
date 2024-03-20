@@ -1,0 +1,3 @@
+DeviceRegistryEvents | where RegistryValueType =~ 'String' | where RegistryValueName != @"OnboardingInfo"
+| where strlen(RegistryValueData) > 5000 
+| where InitiatingProcessFileName != @"mssense.exe"
