@@ -1,0 +1,3 @@
+DeviceProcessEvents
+| where FileName  has_any('chrome.exe','msedge.exe') 
+and ProcessCommandLine contains "--load-extension"
