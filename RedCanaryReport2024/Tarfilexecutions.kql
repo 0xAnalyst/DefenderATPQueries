@@ -1,0 +1,1 @@
+DeviceProcessEvents |  where ProcessCommandLine    has_all ('tar', ' -xvf', ' -C')| where InitiatingProcessParentFileName != @"Cisco WebEx Start"
