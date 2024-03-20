@@ -1,0 +1,2 @@
+DeviceNetworkEvents
+| where InitiatingProcessFileName contains "wscript.exe"| where RemoteIPType == @"Public" | where RemoteUrl !endswith @".entrust.net"
