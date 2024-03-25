@@ -5,6 +5,6 @@ references: https://academy.hackthebox.com/course/preview/active-directory-blood
 tags: Collection, t1087.001
 search_query: 
 (DeviceFileEvents
-| where FileName contains "users.json" or  FileName contains "*computers.jons" or  FileName contains "*groups.json" or  FileName contains "*ous.json" or  FileName contains "*domains.json" or  FileName contains "bloodhound" or  FileName contains "gpos.json" | where FileName != @"bloodhound.js"| where FileName != @"bloodhoundDropdown.js"
+| where FileName contains "users.json" or  FileName contains "*computers.json" or  FileName contains "*groups.json" or  FileName contains "*ous.json" or  FileName contains "*domains.json" or  FileName contains "bloodhound" or  FileName contains "gpos.json" | where FileName != @"bloodhound.js"| where FileName != @"bloodhoundDropdown.js"
 )
 Notes:
