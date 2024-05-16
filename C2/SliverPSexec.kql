@@ -1,0 +1,22 @@
+# Rule Documentation: Registry Value Set for Sliver Implant Psexec execution
+
+## Description
+Detects registry value sets associated with the Sliver implant.
+https://www.microsoft.com/en-us/security/blog/2022/08/24/looking-for-the-sliver-lining-hunting-for-emerging-command-and-control-frameworks/
+
+## Detection Logic
+- Filters `DeviceRegistryEvents` for actions where a registry value is set (`RegistryValueSet`).
+- Looks for specific registry value name and data combinations:
+  - `DisplayName` with value `Sliver`.
+  - `Description` with value `Sliver implant`.
+
+## Tags
+- Persistence
+- Command and Control
+
+## Search Query
+```kql
+DeviceRegistryEvents 
+| where ActionType == 'RegistryValueSet' 
+| where (RegistryValueName == 'DisplayName' and RegistryValueData == 'Sliver')
+   or (RegistryValueName == 'Description' and RegistryValueData == 'Sliver implant')
