@@ -16,4 +16,4 @@ https://github.com/elastic/detection-rules/blob/6150f222b2ce2a26e0874e96ab31479b
 ```kql
 DeviceFileEvents
 | where ActionType == "FileCreated"
-| where FolderPath matches regex @"(?i)^[A-Z]:\\:.+:\\$"
+| where FolderPath matches regex @"(?i)^[A-Z]:\\:.+"
