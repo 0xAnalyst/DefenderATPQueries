@@ -1,0 +1,21 @@
+# Rule Documentation: Suspicious Microsoft Common Console file Execution 
+
+## Description
+Detects Microsoft Management Console (MMC)  Microsoft Common Console file Execution 
+https://www.genians.co.kr/blog/threat_intelligence/facebook 
+
+## Detection Logic
+- Filters `DeviceProcessEvents` for MMC executions containing "mmc" and ".msc".
+- Excludes processes from `C:\Windows\system32\`.
+- Filters out "vbc.exe" and "WerFault.exe".
+
+## Tags
+- Execution Monitoring
+- Privilege Escalation
+
+## Search Query
+```kql
+DeviceProcessEvents
+| where InitiatingProcessCommandLine has_all ("mmc", @".msc")
+| where not(InitiatingProcessCommandLine matches regex @"(?i)[A-Za-z]:\\Windows\\system32\\.*")
+| where ProcessVersionInfoInternalFileName !in ("vbc.exe", "WerFault.exe")
