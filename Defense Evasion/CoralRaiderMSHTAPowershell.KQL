@@ -1,0 +1,18 @@
+# Rule Documentation: Defense Evasion - PowerShell CoralRaider PSChildName MSHTA Execution (Windows)
+
+## Description
+Detects the usage of PowerShell with the `PSChildName` command, which may indicate suspicious activity or attempts at defense evasion. This technique has been observed in the activity of suspected CoralRaider, which uses various information stealers as detailed in the article.
+- [Talos Intelligence Blog on CoralRaider](https://blog.talosintelligence.com/suspected-coralraider-continues-to-expand-victimology-using-three-information-stealers/)
+
+## Detection Logic
+- Filters `DeviceProcessEvents` for events where the original file name is `PowerShell.EXE`.
+- Specifically looks for instances where the `ProcessCommandLine` contains the string `PSChildName`.
+
+## Tags
+- Defense Evasion
+
+## Search Query
+```kql
+DeviceProcessEvents
+| where ProcessVersionInfoOriginalFileName == @"PowerShell.EXE"
+| where ProcessCommandLine contains "PSChildName"
