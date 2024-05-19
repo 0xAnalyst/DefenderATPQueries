@@ -12,7 +12,11 @@ Detects the usage of PowerShell with the `PSChildName` command, which may indica
 - Defense Evasion
 
 ## Search Query
-```kql
+
 DeviceProcessEvents
 | where ProcessVersionInfoOriginalFileName == @"PowerShell.EXE"
 | where ProcessCommandLine contains "PSChildName"
+
+```kql
+DeviceEvents
+| where ActionType == @"PowerShellCommand" | where InitiatingProcessCommandLine contains "PSChildName"
