@@ -11,7 +11,7 @@ Detects the usage of PowerShell with the `PSChildName` command, which may indica
 ## Tags
 - Defense Evasion
 
-## Search Query
+## Search Query 
 ```kql
 DeviceProcessEvents
 | where ProcessVersionInfoOriginalFileName == @"PowerShell.EXE"
