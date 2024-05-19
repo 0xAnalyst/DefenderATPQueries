@@ -20,3 +20,6 @@ DeviceProcessEvents
 - Another query from device events which does the same
 DeviceEvents
 | where ActionType == @"PowerShellCommand" | where InitiatingProcessCommandLine contains "PSChildName"
+
+## Notes
+"gp -pa" can also be used to hunt for the same
