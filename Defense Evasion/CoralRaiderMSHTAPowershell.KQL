@@ -17,6 +17,6 @@ DeviceProcessEvents
 | where ProcessVersionInfoOriginalFileName == @"PowerShell.EXE"
 | where ProcessCommandLine contains "PSChildName"
 
-```kql
+- Another query from device events which does the same
 DeviceEvents
 | where ActionType == @"PowerShellCommand" | where InitiatingProcessCommandLine contains "PSChildName"
