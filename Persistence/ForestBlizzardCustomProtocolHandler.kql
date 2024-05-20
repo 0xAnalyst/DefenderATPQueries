@@ -1,0 +1,22 @@
+# Rule Documentation: Suspicious Registry Modification for Custom Protocol Handler (Windows)
+
+## Description
+This detection rule aims to identify suspicious registry modifications associated with custom protocol handlers on Windows systems. Forest Blizzard, a threat actor group, has been known to utilize such techniques for persistence or to facilitate their malicious activities. Monitoring for these registry changes can help detect and mitigate potential threats.
+
+- [Detection.FYI on Registry Set for APT Forest Blizzard Custom Protocol Handler](https://detection.fyi/sigmahq/sigma/emerging-threats/2024/ta/forest-blizzard/registry_set_apt_forest_blizzard_custom_protocol_handler/)
+
+## Detection Logic
+- Monitors `DeviceRegistryEvents` for registry value set actions.
+- Filters for registry keys associated with custom protocol handlers, particularly those modified or created by the threat actor group.
+
+## Tags
+- Persistence
+- Custom Protocol Handler
+- APT Forest Blizzard
+
+## Search Query
+```kql
+DeviceRegistryEvents
+| where ActionType == "RegistryValueSet"
+| where RegistryKey contains "\\Classes\\PROTOCOLS\\Handler"
+| where RegistryKey endswith "rogue"
