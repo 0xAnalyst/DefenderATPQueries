@@ -1,0 +1,22 @@
+# Rule Documentation: Potential Privilege Escalation via CVE-2022-38028 (Windows)
+
+## Description
+This detection rule identifies potential privilege escalation attempts on Windows systems via CVE-2022-38028. This vulnerability allows attackers to escalate privileges by exploiting specific processes and file paths. Monitoring for these patterns can help detect malicious activities aiming to exploit this CVE.
+- [Microsoft analyzing forest blizzards] (https://www.microsoft.com/en-us/security/blog/2024/04/22/analyzing-forest-blizzards-custom-post-compromise-tool-for-exploiting-cve-2022-38028-to-obtain-credentials/)
+- [Elastic Security Guide on CVE-2022-38028](https://www.elastic.co/guide/en/security/current/potential-privilege-escalation-via-cve-2022-38028.html)
+
+## Detection Logic
+- Monitors `DeviceFileEvents` for file creation events in specific directories associated with the CVE.
+- Filters for JavaScript files created in these directories, excluding those initiated by the legitimate `drvinst.exe` process.
+
+## Tags
+- Privilege Escalation
+- CVE-2022-38028
+
+## Search Query
+```kql
+DeviceFileEvents
+| where ActionType == "FileCreated"
+| where FolderPath startswith "C:\\Windows\\System32\\DriverStore\\FileRepository\\" or FolderPath startswith "C:\\Windows\\WinSxS\\amd64_microsoft-windows-printing-printtopdf"
+| where FileName endswith ".js" or FileName == "MPDW-constraints.js"
+| where InitiatingProcessFileName != "drvinst.exe"
