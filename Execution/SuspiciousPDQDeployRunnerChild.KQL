@@ -1,0 +1,25 @@
+# Rule Documentation: Suspicious Child Processes of PDQ Deploy Runner (Windows)
+
+## Description
+This detection rule identifies suspicious child processes spawned by the `PDQDeployRunner.exe` process. PDQ Deploy is a legitimate software deployment tool, but it can be misused by attackers to execute malicious payloads. This rule monitors for unusual child processes that may indicate malicious activity.
+
+- [Detection.FYI on Suspicious Child Processes of PDQ Deploy Runner](https://detection.fyi/sigmahq/sigma/windows/process_creation/proc_creation_win_pdqdeploy_runner_susp_children/)
+
+## Detection Logic
+- Monitors `DeviceProcessEvents` for child processes spawned by `PDQDeployRunner.exe`.
+- Identifies unusual or suspicious processes that are not commonly associated with legitimate PDQ Deploy activities.
+
+## Tags
+- Execution
+- Process Creation
+- PDQ Deploy
+- Suspicious Activity
+
+## Search Query
+```kql
+DeviceProcessEvents
+| where InitiatingProcessParentFileName contains "PDQDeployRunner"
+| where FileName in~ ("powershell.exe", "cmd.exe", "wscript.exe", "cscript.exe", "mshta.exe", "rundll32.exe", "regsvr32.exe", "schtasks.exe", "taskkill.exe", "at.exe", "wmic.exe", "bitsadmin.exe")
+
+Notes:
+Exclude trusted processes within your network
