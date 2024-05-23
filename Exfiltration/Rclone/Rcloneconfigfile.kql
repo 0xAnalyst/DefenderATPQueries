@@ -1,0 +1,23 @@
+# Rule Documentation: Detection of rclone Usage in File Events
+
+## Description
+This detection rule identifies file events related to the usage of the rclone tool. Rclone is a legitimate command-line program used for syncing files and directories to and from various cloud storage providers. However, its usage in certain contexts may indicate potential data exfiltration or unauthorized file operations if used maliciously.
+
+## Detection Logic
+- Monitors `DeviceFileEvents` for events where:
+  - The `FolderPath` contains the string "rclone\", and
+  - The `InitiatingProcessParentFileName` does not equal "Install WD Discovery".
+
+## Tags
+- File Events
+- Data Exfiltration
+- Unauthorized File Operations
+- Cloud Storage
+- rclone
+- Suspicious Activity
+
+## Search Query
+```kql
+DeviceFileEvents
+| where FolderPath contains @"rclone\" and InitiatingProcessParentFileName != @"Install WD Discovery"
+
