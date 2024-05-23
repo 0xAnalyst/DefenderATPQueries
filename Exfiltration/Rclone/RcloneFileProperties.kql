@@ -1,0 +1,24 @@
+# Rule Documentation: Detection of rclone or Rsync Process Activity
+
+## Description
+This detection rule identifies activity related to the execution of the rclone tool or processes associated with Rsync. Both rclone and Rsync are legitimate tools commonly used for file synchronization and transfer. However, their presence or activity may also indicate potential data exfiltration or unauthorized file transfers if used maliciously.
+
+## Detection Logic
+- Monitors `DeviceProcessEvents` for processes where:
+  - The `ProcessVersionInfoOriginalFileName` contains "rclone", or
+  - The `FileName` contains "rclone", or
+  - The `ProcessVersionInfoFileDescription` contains "Rsync".
+
+## Tags
+- Execution
+- File Transfer
+- Data Exfiltration
+- Rsync
+- rclone
+- Suspicious Activity
+
+## Search Query
+```kql
+DeviceProcessEvents
+| where ProcessVersionInfoOriginalFileName contains "rclone" or FileName contains "rclone"
+or ProcessVersionInfoFileDescription contains "Rsync"

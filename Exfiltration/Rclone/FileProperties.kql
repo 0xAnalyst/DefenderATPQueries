@@ -1,3 +1,0 @@
-DeviceProcessEvents
-| where ProcessVersionInfoOriginalFileName contains "rclone" or FileName contains "rclone"
-or ProcessVersionInfoFileDescription contains "Rsync"
