@@ -24,4 +24,4 @@ DeviceNetworkEvents
 | where parsed.ja3 in (externaldata(Ja3Hash: string) [@"https://raw.githubusercontent.com/0xAnalyst/DefenderATPQueries/main/Malja3fingerpints"])
 
 
-# filter noise by removing internal IPs and internal domain certificates by parsed.subject
+# filter noise by removing internal IPs and internal domain certificates by parsed.subject or remvoe private IPs by where not (ipv4_is_private(RemoteIP))
