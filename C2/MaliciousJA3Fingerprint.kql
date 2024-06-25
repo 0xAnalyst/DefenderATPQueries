@@ -21,7 +21,7 @@ This detection rule identifies SSL connections inspected by Microsoft Defender f
 DeviceNetworkEvents
 | where ActionType contains "SslConnectionInspected" 
 | extend parsed = parse_json(AdditionalFields)
-| where parsed.ja3 in (externaldata(IP: string) [@"https://raw.githubusercontent.com/0xAnalyst/DefenderATPQueries/main/Malja3fingerpints"])
+| where parsed.ja3 in (externaldata(Ja3Hash: string) [@"https://raw.githubusercontent.com/0xAnalyst/DefenderATPQueries/main/Malja3fingerpints"])
 
 
 # filter noise by removing internal IPs and internal domain certificates by parsed.subject
