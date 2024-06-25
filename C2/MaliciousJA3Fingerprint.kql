@@ -1,0 +1,27 @@
+# Rule Documentation: Detection of Malicious JA3 Fingerprints in SSL Connections
+
+## Description
+This detection rule identifies SSL connections inspected by Microsoft Defender for Endpoint (MDE) that match known malicious JA3 fingerprints. JA3 fingerprints are used to identify SSL/TLS clients based on their SSL/TLS handshake. Monitoring for these fingerprints can help detect potentially malicious activity, such as command and control (C2) communications.
+
+## Detection Logic
+- Monitors `DeviceNetworkEvents` for events where the `ActionType` contains "SslConnectionInspected".
+- Parses the `AdditionalFields` column as JSON to extract the `ja3` fingerprint.
+- Compares the extracted `ja3` fingerprint against a list of known malicious JA3 fingerprints sourced from an external dataset.
+
+## Tags
+- Network Monitoring
+- SSL/TLS Inspection
+- JA3 Fingerprinting
+- Malicious Activity
+- Command and Control (C2)
+- Suspicious Activity
+
+## Search Query
+```kql
+DeviceNetworkEvents
+| where ActionType contains "SslConnectionInspected" 
+| extend parsed = parse_json(AdditionalFields)
+| where parsed.ja3 in (externaldata(IP: string) [@"https://raw.githubusercontent.com/0xAnalyst/DefenderATPQueries/main/Malja3fingerpints"])
+
+
+# filter noise by removing internal IPs and internal domain certificates by parsed.subject
