@@ -1,4 +1,4 @@
-# Rule Documentation: Detection of Unauthorized Creation of doas.conf File
+# Detection of Unauthorized Creation of doas.conf File
 
 ## Description
 This detection rule identifies attempts to create the `doas.conf` file on Linux systems. The `doas.conf` file is used by the `doas` command to provide a minimalistic alternative to `sudo` for privilege escalation. Unauthorized creation of this file could indicate malicious activity, such as an attempt to configure `doas` settings to gain elevated privileges.
