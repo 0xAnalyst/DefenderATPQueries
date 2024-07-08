@@ -1,4 +1,4 @@
-# Detection of Unauthorized Creation of Files in /etc/sudoers.d/
+# Rule: Detection of Unauthorized Creation of Files in /etc/sudoers.d/
 
 ## Description
 This detection rule identifies attempts to create files in the `/etc/sudoers.d/` directory on Linux systems. The `/etc/sudoers.d/` directory is used to include additional sudoers configuration files. Unauthorized creation of files in this directory could indicate an attempt to escalate privileges or gain unauthorized access by adding malicious sudoers configurations.
