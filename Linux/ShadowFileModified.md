@@ -1,4 +1,4 @@
-# Detection of Unauthorized Renaming of /etc/shadow
+# Rule: Detection of Unauthorized Renaming of /etc/shadow
 
 ## Description
 This detection rule identifies attempts to rename the `/etc/shadow` file on Linux systems. The `/etc/shadow` file contains hashed passwords for user accounts and should never be renamed during normal operations. Unauthorized renaming of this file could indicate malicious activity, such as an attempt to hide unauthorized changes to user passwords.
