@@ -1,4 +1,4 @@
-# Linux Webshell Indicators
+# Rule: Linux Webshell Indicators
 
 ## Description
 Detects potential webshell activity by monitoring process events where suspicious processes associated with web servers and common system administration tools are executed.
