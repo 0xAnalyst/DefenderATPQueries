@@ -1,4 +1,4 @@
-# Detection of Ptrace System Call (PTraceDetected)
+# Rule: Detection of Ptrace System Call (PTraceDetected)
 
 ## Description
 This detection rule identifies the usage of the `ptrace` system call on Linux systems. The `ptrace` system call is used by debuggers and other programs to observe and control the execution of another process. While `ptrace` is a legitimate tool, it can also be misused by attackers for various malicious activities such as process injection, code execution, and obtaining sensitive information from other processes.
