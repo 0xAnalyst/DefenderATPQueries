@@ -1,7 +1,0 @@
-Tags:
-
-Query:
-DeviceEvents | where ActionType == 'PTraceDetected' 
-
-References:
-https://attack.mitre.org/techniques/T1055/008/
