@@ -1,4 +1,4 @@
-# Detection of Suspicious File Creation Related to TripleCrosse eBPF Backdoor
+# Rule: Detection of Suspicious File Creation Related to TripleCrosse eBPF Backdoor
 
 ## Description
 This detection rule identifies the creation of suspicious files named "ebpfbackdoor" or "rootlog" on Linux systems. These files are associated with malicious activities, such as the installation of rootkits or backdoors. The creation of such files can indicate an attempt to establish persistence or hide unauthorized activities on the system.
