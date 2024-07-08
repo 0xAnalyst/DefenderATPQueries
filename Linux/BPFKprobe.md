@@ -8,7 +8,7 @@ Detects the use of BPF (Berkeley Packet Filter) and kprobes with potentially uns
 ## Detection Logic
 - Monitors process command lines for specific patterns indicating the use of BPF and kprobes with potentially risky configurations:
   - `bpftrace` with the `--unsafe` flag, which allows BPF trace scripts to perform potentially unsafe operations.
-  - `kprobes` with `enabel`, indicating kprobe tracing is enabled.
+  - `kprobes` with `enable`, indicating kprobe tracing is enabled.
 
 ## Tags
 - BPF
@@ -20,4 +20,4 @@ Detects the use of BPF (Berkeley Packet Filter) and kprobes with potentially uns
 ## Search Query
 ```kql
 DeviceProcessEvents
-| where ProcessCommandLine has_all ("bpftrace", "--unsafe") or ProcessCommandLine has_all ("kprobes", "enabel")
+| where ProcessCommandLine has_all ("bpftrace", "--unsafe") or ProcessCommandLine has_all ("kprobes", "enable")
