@@ -1,4 +1,4 @@
-# Rule Documentation: Capability Discovery via getcap
+# Rule : Capability Discovery via getcap
 
 ## Description
 Detects the use of the `getcap` command, which is used to query the capabilities of executables on Linux systems. Capabilities can grant elevated privileges to executables, and discovering these capabilities can be part of an attacker's reconnaissance phase. This detection specifically excludes instances where `getcap` is run by the `vmtoolsd` service.
