@@ -1,0 +1,21 @@
+# Rule : Clipboard Data Collection via xclip
+
+## Description
+Detects the use of the `xclip` command to access clipboard data. The `xclip` utility is used to manipulate the X11 clipboard, and its usage with specific flags can indicate attempts to capture clipboard contents, which may include sensitive information such as passwords or other confidential data.
+
+- Source: [Sigma rule for detecting clipboard collection](https://github.com/SigmaHQ/sigma/blob/0bb6f0c0d75ae3e1c37f9ab77d68f20cdb32ecd3/rules/linux/process_creation/proc_creation_lnx_clipboard_collection.yml)
+
+## Detection Logic
+- Monitors process events where the executed file name contains `xclip`.
+- Filters for instances where the process command line includes the terms `sel` and `clip`, indicating an attempt to access or manipulate clipboard data.
+
+## Tags
+- Clipboard Collection
+- xclip
+- Process Events
+- Linux
+
+## Search Query
+```kql
+DeviceProcessEvents
+| where FileName contains "xclip" and ProcessCommandLine has_all("sel", "clip")
