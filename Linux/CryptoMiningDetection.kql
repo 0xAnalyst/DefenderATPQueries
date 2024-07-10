@@ -26,7 +26,7 @@ Detects potential cryptocurrency mining activities by monitoring process command
 ```kql
 DeviceProcessEvents
 | where ProcessCommandLine has_any ( 
-    " --cpu-priority=", 
+    "--cpu-priority=", 
     "--donate-level=0", 
     " -o pool.", 
     " --nicehash", 
