@@ -1,4 +1,4 @@
-# Rule Documentation: Crypto Mining Detection
+# Rule : Crypto Mining Detection
 
 ## Description
 Detects potential cryptocurrency mining activities by monitoring process command lines for common indicators associated with mining software. Cryptocurrency mining on compromised systems can lead to degraded performance, increased power consumption, and potential hardware damage.
