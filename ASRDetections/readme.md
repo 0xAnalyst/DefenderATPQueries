@@ -33,6 +33,8 @@ References https://techcommunity.microsoft.com/t5/microsoft-defender-for-endpoin
 
 # Implement ASR Rules 
 Consult online documentation on deploying ASR Rules in audit mode to your network through Group policy or SCCM/Intune. a lot of work is required to move some of the rules to block mode 
+to add exclusion this references helps 
+https://blog.nathanmcnulty.com/defender-for-endpoint-implementing-asr-rules/
 # Get the list of the availalbe ASR rule actiontypes 
 ```
 DeviceEvents
