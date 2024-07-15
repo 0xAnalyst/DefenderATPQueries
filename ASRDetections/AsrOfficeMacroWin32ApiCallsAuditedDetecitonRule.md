@@ -1,4 +1,4 @@
-# Rule Documentation: Detection of Office Macro Win32 API Calls Audited
+# Rule : Detection of Office Macro Win32 API Calls Audited
 
 ## Description
 This detection rule identifies audited events where Office Macros make Win32 API calls. Monitoring for such API calls is crucial because macros can be used to execute malicious code on the system. Malicious actors often exploit Office macros to run unauthorized scripts or binaries by leveraging Win32 API calls, which can lead to system compromise or data exfiltration.
