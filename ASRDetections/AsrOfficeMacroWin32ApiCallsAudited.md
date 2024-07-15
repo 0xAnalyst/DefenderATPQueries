@@ -21,3 +21,5 @@ This rule monitors for audited actions related to Office macros making Win32 API
 DeviceEvents 
 | where ActionType == "AsrOfficeMacroWin32ApiCallsAudited"
 ```
+## Note
+Exclude trusted file names as this might get noisy
