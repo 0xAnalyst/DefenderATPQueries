@@ -1,4 +1,4 @@
-# Rule Documentation: Detection of Untrusted Executables in User Folders
+# Rule : Detection of Untrusted Executables in User Folders
 
 ## Description
 This detection rule identifies untrusted executables within user directories that have been audited by Advanced Security Rules (ASR). Monitoring for untrusted executables is crucial because they can indicate the presence of malware or unauthorized software introduced into the system by malicious actors. This rule helps identify newly observed, globally rare executables within user folders that might have been introduced through various attack vectors.
