@@ -31,6 +31,8 @@ References https://techcommunity.microsoft.com/t5/microsoft-defender-for-endpoin
 - Block Win32 API calls from Office macros	92e97fa1-2edf-4476-bdd6-9dd0b4dddc7b
 - Use advanced protection against ransomware	c1db55ab-c21a-4637-bb3f-a12568109d35
 
+# Implement ASR Rules 
+Consult online documentation on deploying ASR Rules in audit mode to your network through Group policy or SCCM/Intune. a lot of work is required to move some of the rules to block mode 
 # Get the list of the availalbe ASR rule actiontypes 
 ```
 DeviceEvents
