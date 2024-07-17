@@ -1,4 +1,4 @@
-# Rule Documentation: Thunderbird rnpkeys.exe DLL Hijacking - StealC InfoStealer
+# Rule : Thunderbird rnpkeys.exe DLL Hijacking - StealC InfoStealer
 
 ## Description
 This detection rule identifies the execution of `rnpkeys.exe` associated with the Thunderbird email client. The `rnpkeys.exe` process is related to the handling of cryptographic keys in Thunderbird. Monitoring this process is essential because it could be exploited by malicious actors to manipulate encryption keys, potentially compromising secure communications. According to the MITRE ATT&CK framework, such manipulations fall under "DLL Search Order Hijacking" (T1574.001), where adversaries may exploit the search order to load malicious DLLs.
