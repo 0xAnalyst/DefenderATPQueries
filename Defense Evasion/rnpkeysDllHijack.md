@@ -5,6 +5,8 @@ This detection rule identifies the execution of `rnpkeys.exe` associated with th
 
 This rule helps detect and audit the usage of `rnpkeys.exe` within Thunderbird, ensuring that only legitimate key operations are performed and providing an early warning for potential malicious activities.
 
+Seen  in version 115.6.0
+and the dll file name is rnp.dll
 - [MITRE ATT&CK: DLL Search Order Hijacking](https://attack.mitre.org/techniques/T1574/001/)
 
 ## Detection Logic
