@@ -42,3 +42,6 @@ DeviceEvents
 | where ActionType startswith 'Asr'
 ```
 
+# References
+- https://asrgen.streamlit.app/ASR_Atomic_Testing
+
