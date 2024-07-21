@@ -1,4 +1,4 @@
-# What does ASR rules offers
+# What does ASR rules offer
 ASR rules offer a broad range of built-in rules to secure your endpoint, covering areas like Office applications (think macros, DDE’s, etc.) subversion or leverage, but also things like Webmail, script, WMI, LSASS, and much more.
 ## To implement ASR rules following is Required:
   - Computers running Windows 10, versions 1709 and later,  Windows Server version 1803 (Semi-Annual Channel or later) and Windows Server 2019
