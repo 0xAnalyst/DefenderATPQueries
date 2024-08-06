@@ -1,4 +1,4 @@
-# Rule Documentation: Detection of Suspicious MSI and DLL Activity Associated with Latrodectus Malware
+# Rule : Detection of Suspicious MSI and DLL Activity Associated with Latrodectus Malware
 
 ## Description
 This detection rule identifies suspicious file and process activities that could be indicative of Latrodectus malware or similar threats. The query monitors for specific file paths, particularly MSI files and the `aclui.dll`, often used in malicious contexts, in combination with `msiexec` or `rundll32` processes. Latrodectus malware, as described in recent analyses, leverages these files and processes to execute payloads and achieve persistence on infected systems.
