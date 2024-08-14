@@ -1,4 +1,4 @@
-# Rule Documentation: User Reported MFA suspicious activity
+# Rule : User Reported MFA Suspicious Activity
 
 ## Description
 This detection rule identifies and correlates suspicious user management activities within Azure Active Directory (AAD) audit logs with sign-in logs to provide a comprehensive overview of potential unauthorized access. This rule is particularly focused on operations that deviate from normal user management activities, such as those that are not associated with updating user profiles, and that contain terms indicative of reported activities.
