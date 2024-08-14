@@ -39,6 +39,6 @@ AuditLogs
     | project username, IPAddress, TimeGenerated
 ) on username
 | distinct TimeGenerated, username, ActivityDisplayName, OperationName, IPAddress
-
+```
 Note:
 This might not report activities where IP addresses weren't in signinlogs. first part of the query can be used as a detection rule by itself
