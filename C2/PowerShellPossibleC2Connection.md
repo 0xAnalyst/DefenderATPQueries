@@ -1,4 +1,4 @@
-# Rule Documentation: Suspicious PowerShell Web Requests
+# Rule : Suspicious PowerShell Web Requests
 
 ## Description
 This detection rule is designed to identify PowerShell commands associated with downloading or transferring data from a system, often used by attackers during data exfiltration or for malicious downloads. Malicious actors use web request utilities such as `Invoke-WebRequest`, `iwr`, `wget`, `curl`, `Net.WebClient`, and `Start-BitsTransfer` within PowerShell to interact with remote resources, posing a significant threat to system security.
