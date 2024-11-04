@@ -1,4 +1,4 @@
-# Rule Documentation: Detection of Suspicious Driver Loads Indicative of EDR Bypass
+# Rule : Detection of Suspicious Driver Loads Indicative of EDR Bypass
 
 ## Description
 This detection rule identifies the loading of suspicious drivers, such as `WN_64.sys` and `wnbios.sys`, which are commonly associated with techniques used to bypass Endpoint Detection and Response (EDR) systems. Attackers may use malicious or modified drivers to disable security software, avoid detection, and establish a foothold within the system. The identified drivers have been linked to sophisticated extortion and ransomware campaigns, as described by Palo Alto Networks' Unit 42 in their analysis of EDR bypass techniques.
