@@ -26,7 +26,7 @@ DeviceEvents
 | where FileName has_any("WN_64.sys", "wnbios.sys")
 ```
 
-You can ass add the following line to detect the specific vulnerable drivers 
+You can add the following line to detect the specific vulnerable drivers 
 ```| extend parsed = parse_json(AdditionalFields)
    |  where FileName has_any("WN_64.sys", "wnbios.sys") or parsed.ImageSHA256 has_any("6106d1ce671b92d522144fcd3bc01276a975fe5d5b0fde09ca1cca16d09b7143","6106d1ce671b92d522144fcd3bc01276a975fe5d5b0fde09ca1cca16d09b7143")
 ```
