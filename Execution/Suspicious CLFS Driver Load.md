@@ -5,7 +5,7 @@ This detection rule identifies suspicious loading of the CLFS driver, which may 
 
 Monitoring image load events for the CLFS driver can provide early detection of such exploitation attempts, enabling rapid investigation and remediation.
 
-- [Sigma Rule: Image Load CLFS Load](https://detection.fyi/sigmahq/sigma/windows/image_load/image_load_clfs_load/)
+- [Sigma Rule: Image Load CLFS Load](https://detection.fyi/sigmahq/sigma/windows/image_load/image_load_clfs_load/)  
 
 ## Detection Logic
 - Monitors `DeviceImageLoadEvents` for events where the loaded image corresponds to the CLFS driver (e.g., `clfs.sys`).
@@ -18,6 +18,7 @@ Monitoring image load events for the CLFS driver can provide early detection of 
 - Kernel Module Manipulation
 - Persistence
 - CLFS
+-  CVE-2024-38196
 
 ## Search Query
 ```kql
