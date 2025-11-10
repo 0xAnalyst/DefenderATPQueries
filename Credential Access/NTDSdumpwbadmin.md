@@ -20,5 +20,5 @@ Detects abuse of Windows Backup (`wbadmin.exe`) to export sensitive Active Direc
 DeviceProcessEvents
 | where FileName =~ "wbadmin.exe" or ProcessCommandLine contains "wbadmin"
 | where ProcessCommandLine contains "ntds.dit" or ProcessCommandLine contains "config\\SYSTEM" or ProcessCommandLine contains "config\\SECURITY"
-| project Timestamp, DeviceName, InitiatingProcessAccountName, ProcessCommandLine, ReportId
+| project Timestamp,DeviceId, DeviceName, InitiatingProcessAccountName, ProcessCommandLine, ReportId
 ```
