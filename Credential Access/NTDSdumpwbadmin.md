@@ -1,4 +1,4 @@
-# Rule Documentation: NTDS.dit Dump via wbadmin.exe Abuse
+# Rule : NTDS.dit Dump via wbadmin.exe Abuse
 
 ## Description
 Detects abuse of Windows Backup (`wbadmin.exe`) to export sensitive Active Directory artifacts such as `NTDS.dit`, `SYSTEM`, and `SECURITY` hives. Attackers may use `wbadmin start backup` with `-include` flags targeting these files to extract account hashes and secrets.
