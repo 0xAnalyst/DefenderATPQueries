@@ -22,3 +22,6 @@ DeviceProcessEvents
 | where ProcessCommandLine contains "-R" or ProcessCommandLine contains "-L" or ProcessCommandLine contains "RemoteForward"
 | project Timestamp, DeviceName, InitiatingProcessAccountName, ProcessCommandLine, ReportId
 ```
+
+## Note
+This rule is very noisy and will generate a lot of alerts it needs to be adjusted to remove any legitimate behavior 
