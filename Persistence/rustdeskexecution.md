@@ -1,4 +1,4 @@
-# Rule Documentation: RustDesk Remote Access Tool Installation for Persistence
+# Rule: RustDesk Remote Access Tool usage
 
 ## Description
 Detects installation or use of remote access tools like RustDesk on servers or privileged endpoints where such tools are not authorized. Attackers often install legitimate remote tools to maintain remote access and bypass controls.
