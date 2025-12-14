@@ -59,7 +59,6 @@ let Suspicious = dynamic([
 ]);
 
 DeviceProcessEvents
-| where OSPlatform == "Linux"
 | where FileName in~ (Launchers)
 | where ProcessCommandLine has "run"
 | where ProcessCommandLine has_any (Shells)
