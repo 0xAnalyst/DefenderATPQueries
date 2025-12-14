@@ -1,47 +1,32 @@
 ---
 title: Suspicious Pod or Container Shell Execution
 tags:
-  - Containers
-  - Kubernetes
   - Execution
   - Persistence
   - Privilege Escalation
+  - Containers
 references:
   - https://github.com/elastic/detection-rules/commit/f098336ff951dd7c2b78ae67054ad517c846e671
 files: []
 ---
 
-Detects suspicious container or pod execution where administrative tooling (`kubectl`, `docker`, `nerdctl`) is used to launch an interactive shell with command-line patterns commonly observed during post-exploitation activity.
-
----
+Detects suspicious use of container or Kubernetes administration tooling to spawn an interactive shell with command-line patterns commonly observed during post-exploitation activity.
 
 ## Description
 
-Threat actors abusing Kubernetes or containerized environments often rely on legitimate administration tools to gain execution inside a cluster. Instead of deploying standard workloads, attackers commonly spawn a container or pod and immediately execute a shell (`bash`, `sh`, `zsh`) to perform hands-on operations.
+Threat actors frequently abuse legitimate container administration utilities such as `kubectl`, `docker`, or `nerdctl` to gain interactive access inside a pod or container. Instead of deploying standard workloads, attackers often launch a shell directly and execute one-liner commands to establish persistence, stage payloads, or open reverse shells.
 
-Once inside the container, attackers may establish persistence, manipulate authentication material, stage payloads, or open reverse shells. This activity frequently blends in with legitimate DevOps operations and is therefore easy to miss without command-line level inspection.
-
----
+This technique is commonly observed following stolen Kubernetes credentials, exposed cluster APIs, or compromised CI/CD runners.
 
 ## Detection Logic
 
-This detection identifies:
+This detection identifies process execution where:
 
-- Container or Kubernetes administration tooling used to create or run a pod/container
-- Immediate execution of a shell interpreter
-- Presence of suspicious command-line indicators associated with:
-  - Persistence (`cron`, `at`, `rc.local`)
-  - Privilege escalation (`/etc/sudoers`, `/etc/shadow`)
-  - Credential access (SSH key paths)
-  - Payload staging (`base64`, `xxd`)
-  - Reverse shells (`/dev/tcp`, `nc`, `socat`, `telnet`)
-  - Execution from temporary or sensitive directories
+- A container or Kubernetes administration binary is used
+- A shell interpreter is executed as part of container or pod creation
+- The command-line contains indicators associated with persistence, credential manipulation, payload staging, or remote command execution
 
----
-
-## Microsoft Defender for Endpoint
-
-### Advanced Hunting Query
+## Defender Advanced Hunting
 
 ```kql
 let Shells = dynamic(["bash","dash","sh","tcsh","csh","zsh","ksh","fish"]);
@@ -54,7 +39,8 @@ let Suspicious = dynamic([
   "import pty","pty.spawn","import subprocess","subprocess.call",
   "TCPSocket.new","TCPSocket.open","io.popen","os.execute","fsockopen",
   "disown"," ncat "," nc "," netcat "," nc.traditional ","socat","telnet",
-  "/tmp/","/dev/shm/","/var/tmp/","/boot/","/sys/","/lost+found/","/media/","/proc/",
+  "/tmp/","/dev/shm/","/var/tmp/",
+  "/boot/","/sys/","/lost+found/","/media/","/proc/",
   "/var/backups/","/var/log/","/var/mail/","/var/spool/"
 ]);
 
@@ -63,7 +49,17 @@ DeviceProcessEvents
 | where ProcessCommandLine has "run"
 | where ProcessCommandLine has_any (Shells)
 | where ProcessCommandLine has_any (Suspicious)
-| project Timestamp, DeviceName, AccountName, FileName, ProcessCommandLine,
-          InitiatingProcessFileName, InitiatingProcessCommandLine, FolderPath,
-          ProcessId, InitiatingProcessId, ReportId
+| project
+    Timestamp,
+    DeviceName,
+    AccountName,
+    FileName,
+    ProcessCommandLine,
+    InitiatingProcessFileName,
+    InitiatingProcessCommandLine,
+    FolderPath,
+    ProcessId,
+    InitiatingProcessId,
+    ReportId
 | order by Timestamp desc
+```
