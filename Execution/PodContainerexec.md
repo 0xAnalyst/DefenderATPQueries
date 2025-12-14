@@ -61,5 +61,17 @@ let Suspicious = dynamic([
   "socat","telnet",
   "/tmp/","/dev/shm/","/var/tmp/",
   "/boot/","/sys/","/lost+found/","/media/","/proc/",
-  "/var/backups/","/var/lo
+  "/var/backups/","/var/log/","/var/mail","/var/spool"
+]);
+
+DeviceProcessEvents
+| where FileName in~ (Launchers)
+| where ProcessCommandLine has "run"
+| where ProcessCommandLine has_any (Shells)
+| where ProcessCommandLine has_any (Suspicious)
+| project Timestamp, DeviceName, AccountName, FileName,
+          ProcessCommandLine, InitiatingProcessFileName,
+          InitiatingProcessCommandLine, FolderPath,
+          ProcessId, InitiatingProcessId, ReportId
+| order by Timestamp desc
 ```
