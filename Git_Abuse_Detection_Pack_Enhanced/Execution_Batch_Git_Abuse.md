@@ -1,25 +1,4 @@
----
-title: Batch Script Driven Git History Manipulation
-id: batch-driven-git-history-manipulation
-status: experimental
-severity: high
-platform: Windows
-logsource: DeviceProcessEvents
-category: Execution
-tags:
-  - Execution
-  - Git Abuse
-  - Automation
-  - Supply Chain
-mitre:
-  - T1059.003
-  - T1070.006
-references:
-  - Windows-based repo poisoning automation
-  - Supply chain intrusion workflows
----
-
-# Rule Documentation: Batch Script Driven Git History Manipulation
+# Rule : Batch Script Driven Git History Manipulation
 
 ## Description
 Detects batch or command scripts invoking chained Git history rewrite operations, including commit amendment, verification bypass, force push, and local identity changes. This is useful for identifying attacker automation tooling in Windows developer environments.
