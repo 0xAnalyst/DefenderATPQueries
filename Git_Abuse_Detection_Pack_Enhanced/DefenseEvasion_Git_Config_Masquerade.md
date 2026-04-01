@@ -1,24 +1,4 @@
----
-title: Git Author Masquerading via Local User Config Changes
-id: git-local-author-masquerade
-status: experimental
-severity: medium
-platform: Windows
-logsource: DeviceProcessEvents
-category: DefenseEvasion
-tags:
-  - Masquerading
-  - Git Abuse
-  - Supply Chain
-  - Defense Evasion
-mitre:
-  - T1036
-references:
-  - Trusted contributor impersonation patterns
-  - Supply chain repository manipulation
----
-
-# Rule Documentation: Git Author Masquerading via Local User Config Changes
+# Rule : Git Author Masquerading via Local User Config Changes
 
 ## Description
 Detects local Git configuration changes that set author name or email immediately before commit operations. In malicious scenarios, this can be used to preserve the appearance of trusted contributor identity.
