@@ -1,25 +1,4 @@
----
-title: Suspicious Git Commit Rewrite with Verification Bypass
-id: git-commit-amend-noverify
-status: experimental
-severity: high
-platform: Windows
-logsource: DeviceProcessEvents
-category: Execution
-tags:
-  - Defense Evasion
-  - Git Abuse
-  - Supply Chain
-  - Anti-Forensics
-mitre:
-  - T1070.006
-  - T1036
-references:
-  - PolinRider campaign research
-  - Supply chain commit history tampering patterns
----
-
-# Rule Documentation: Suspicious Git Commit Rewrite with Verification Bypass
+# Rule : Suspicious Git Commit Rewrite with Verification Bypass
 
 ## Description
 Detects Git history rewrite activity where a user amends the latest commit while bypassing local verification hooks. This behavior can be used to preserve the appearance of legitimate development activity while modifying repository contents.
