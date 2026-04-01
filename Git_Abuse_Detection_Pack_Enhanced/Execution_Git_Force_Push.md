@@ -1,25 +1,4 @@
----
-title: Suspicious Git Force Push Activity
-id: git-force-push-abuse
-status: experimental
-severity: medium
-platform: Windows
-logsource: DeviceProcessEvents
-category: Execution
-tags:
-  - Git Abuse
-  - Supply Chain
-  - Repo Poisoning
-  - Defense Evasion
-mitre:
-  - T1070
-  - T1098
-references:
-  - Repo poisoning tradecraft
-  - Supply chain compromise investigations
----
-
-# Rule Documentation: Suspicious Git Force Push Activity
+# Rule : Suspicious Git Force Push Activity
 
 ## Description
 Detects force-push behavior that may indicate rewritten commit history being pushed upstream. This becomes especially suspicious when paired with commit amendment, verification bypass, or stealthy workspace/task modifications.
