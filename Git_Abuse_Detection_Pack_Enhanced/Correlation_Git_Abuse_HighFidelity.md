@@ -1,26 +1,4 @@
----
-title: High-Fidelity Correlation for Git History Manipulation
-id: correlated-git-history-manipulation
-status: experimental
-severity: high
-platform: Windows
-logsource: DeviceProcessEvents
-category: Correlation
-tags:
-  - Correlation
-  - Git Abuse
-  - Supply Chain
-  - Anti-Forensics
-mitre:
-  - T1070.006
-  - T1036
-  - T1059.003
-references:
-  - PolinRider-aligned anti-forensics
-  - Supply chain developer compromise investigations
----
-
-# Rule Documentation: High-Fidelity Correlation for Git History Manipulation
+# Rule : High-Fidelity Correlation for Git History Manipulation
 
 ## Description
 Correlates the strongest Git abuse indicators on the same device: local Git identity changes, commit amendment, verification bypass, force push, and optional time manipulation. This is intended as a high-confidence analytic for stealth repository tampering.
