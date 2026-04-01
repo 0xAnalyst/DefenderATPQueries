@@ -1,24 +1,4 @@
----
-title: System Time Manipulation Followed by Git Activity
-id: time-change-followed-by-git
-status: experimental
-severity: high
-platform: Windows
-logsource: DeviceProcessEvents
-category: DefenseEvasion
-tags:
-  - Anti-Forensics
-  - Git Abuse
-  - Timestomp
-  - Supply Chain
-mitre:
-  - T1070.006
-references:
-  - Anti-forensic commit backdating
-  - PolinRider-aligned workflow tampering
----
-
-# Rule Documentation: System Time Manipulation Followed by Git Activity
+# Rule : System Time Manipulation Followed by Git Activity
 
 ## Description
 Detects potential anti-forensic behavior where local date or time is changed before or near Git commit or push operations. This pattern is highly suspicious on developer endpoints and can indicate backdating of malicious repository changes.
