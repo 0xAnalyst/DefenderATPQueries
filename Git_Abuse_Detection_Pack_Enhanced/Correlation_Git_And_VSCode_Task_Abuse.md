@@ -17,14 +17,12 @@ This correlation looks for:
 let GitAbuse = DeviceProcessEvents
 | where ProcessCommandLine has_any ("git commit --amend", "--no-verify", "git push -f", "git push --force", "git config --local")
 | project DeviceId, GitTime=Timestamp, DeviceName, AccountName, GitCmd=ProcessCommandLine;
-
 let SuspiciousNode = DeviceProcessEvents
 | where FileName in~ ("node.exe", "node")
 | where ProcessCommandLine has_any (".woff2", ".woff", ".ttf", ".otf", ".eot")
 | where InitiatingProcessFileName in~ ("Code.exe", "code", "cmd.exe", "powershell.exe", "bash", "sh", "zsh")
    or InitiatingProcessCommandLine has_any ("Code.exe", "code", ".vscode", "tasks.json", "folderOpen")
 | project DeviceId, NodeTime=Timestamp, NodeCmd=ProcessCommandLine, InitiatingProcessFileName, InitiatingProcessCommandLine;
-
 GitAbuse
 | join kind=inner SuspiciousNode on DeviceId
 | where NodeTime between (GitTime - 7d .. GitTime + 7d)
