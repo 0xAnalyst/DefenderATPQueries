@@ -1,26 +1,4 @@
----
-title: Correlation of Git Abuse with VS Code Task or Workspace Triggering
-id: git-vscode-task-correlation
-status: experimental
-severity: high
-platform: Windows
-logsource: Multiple
-category: Correlation
-tags:
-  - Correlation
-  - VS Code
-  - Git Abuse
-  - Supply Chain
-mitre:
-  - T1204
-  - T1059
-  - T1070.006
-references:
-  - Developer-targeted supply chain tradecraft
-  - Workspace-triggered malicious execution patterns
----
-
-# Rule Documentation: Correlation of Git Abuse with VS Code Task or Workspace Triggering
+# Rule : Correlation of Git Abuse with VS Code Task or Workspace Triggering
 
 ## Description
 Correlates Git abuse activity with suspicious VS Code or workspace-triggered execution. This analytic is useful for detecting the full chain where repository tampering is followed by malicious execution through IDE tasking.
