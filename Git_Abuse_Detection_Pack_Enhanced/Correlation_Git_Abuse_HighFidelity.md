@@ -19,22 +19,18 @@ let GitConfig = DeviceProcessEvents
 | where ProcessCommandLine has "git config --local"
 | where ProcessCommandLine has_any ("user.name", "user.email")
 | project DeviceId, DeviceName, AccountName, GitConfigTime=Timestamp, GitConfigCmd=ProcessCommandLine;
-
 let GitAmend = DeviceProcessEvents
 | where ProcessCommandLine has "git commit"
 | where ProcessCommandLine has "--amend"
 | project DeviceId, AmendTime=Timestamp, AmendCmd=ProcessCommandLine;
-
 let GitPush = DeviceProcessEvents
 | where ProcessCommandLine has "git push"
 | where ProcessCommandLine has_any ("-f", "--force", "-uf", "--force-with-lease")
 | project DeviceId, PushTime=Timestamp, PushCmd=ProcessCommandLine;
-
 let TimeChange = DeviceProcessEvents
 | where FileName in~ ("cmd.exe", "powershell.exe", "powershell_ise.exe")
 | where ProcessCommandLine has_any ("date ", "time ", "Set-Date")
 | project DeviceId, TimeChangeTime=Timestamp, TimeChangeCmd=ProcessCommandLine;
-
 GitConfig
 | join kind=inner GitAmend on DeviceId
 | join kind=inner GitPush on DeviceId
