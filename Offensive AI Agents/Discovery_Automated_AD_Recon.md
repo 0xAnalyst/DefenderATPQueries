@@ -10,7 +10,7 @@ Detects bursts of Active Directory enumeration commands — `nltest`, `dsquery`,
 
 ## Detection Logic
 - Filters `DeviceProcessEvents` to AD discovery binaries and PowerShell.
-- Requires AD-discovery keywords in the command line (`/domain_trusts`, `/dclist`, `Domain Admins`, `Get-ADUser`, `Get-ADTrust`, `setspn`, ...).
+- Requires AD-discovery keywords in the command line (`/domain_trusts`, `/dclist`, `Domain Admins`, `Get-ADUser`, `Get-ADTrust`, `setspn`, and AdFind arguments such as `objectcategory`, `trustdmp`, `dcmodes`).
 - Alerts on **≥ 6 commands** with **≥ 4 distinct command lines** in a 5-minute window.
 
 ## Relevant Tables
@@ -29,7 +29,7 @@ let lookback=24h;
 DeviceProcessEvents
 | where Timestamp > ago(lookback)
 | where FileName in~ ("nltest.exe","dsquery.exe","setspn.exe","net.exe","net1.exe","whoami.exe","adfind.exe","ldapsearch","powershell.exe","pwsh.exe")
-| where ProcessCommandLine has_any ("/domain_trusts","/dclist","/all_trusts","Domain Admins","Get-ADUser","Get-ADComputer","Get-ADGroup","Get-ADTrust","Get-ADServiceAccount","Get-ADObject","Get-ADForest","Get-ADDomain","Get-ADDefaultDomainPasswordPolicy","setspn","dsquery","ldapsearch","/domain")
+| where ProcessCommandLine has_any ("/domain_trusts","/dclist","/all_trusts","Domain Admins","Get-ADUser","Get-ADComputer","Get-ADGroup","Get-ADTrust","Get-ADServiceAccount","Get-ADObject","Get-ADForest","Get-ADDomain","Get-ADDefaultDomainPasswordPolicy","setspn","dsquery","ldapsearch","/domain","adfind","objectcategory","trustdmp","dcmodes","domainlist")
 | summarize Commands=count(), DistinctQueries=dcount(ProcessCommandLine), Tools=make_set(FileName,8), Examples=make_set(substring(ProcessCommandLine,0,200),8), FirstSeen=min(Timestamp), LastSeen=max(Timestamp) by DeviceId, DeviceName, AccountName, bin(Timestamp,5m)
 | where Commands >= 6 and DistinctQueries >= 4
 | order by Commands desc

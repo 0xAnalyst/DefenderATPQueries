@@ -1,7 +1,7 @@
 # Rule : OAST, Webhook, and Disposable Callback Destinations
 
 ## Description
-Detects connections to out-of-band testing (OAST) and disposable callback services — `webhook.site`, `interact.sh`, `oast.pro`, `oast.live`, `burpcollaborator.net`, `requestbin.net`, `pipedream.net`. Agentic offensive frameworks and tools like Hexstrike use these to confirm blind vulnerabilities and receive data.
+Detects connections to out-of-band testing (OAST) and disposable callback services — `webhook.site`, `interact.sh`, `oast.pro`, `oast.live`, `burpcollaborator.net`, `oastify.com`, the interactsh servers (`oast.site`, `oast.online`, `oast.fun`, `oast.me`), `requestbin.net`, `pipedream.net`. Agentic offensive frameworks and tools like Hexstrike use these to confirm blind vulnerabilities and receive data.
 
 - **Source:** Google Threat Intelligence Group / Mandiant — ARTEX and Friends: Enter Agentic Offensive Frameworks (Oct 30, 2026) — https://cloud.google.com/blog/topics/threat-intelligence/artex-and-friends-enter-agentic-offensive-frameworks
 - **Rule ID:** OAI-018
@@ -9,7 +9,7 @@ Detects connections to out-of-band testing (OAST) and disposable callback servic
 - **Provenance:** Defender-authored behavioral extrapolation
 
 ## Detection Logic
-- Parses the host from `RemoteUrl` in `DeviceNetworkEvents`.
+- Parses the host from `RemoteUrl` in `DeviceNetworkEvents`, adding `https://` only when the URL has no scheme.
 - Matches against the callback-domain list.
 - Summarizes per device, process and account in 1-hour bins.
 
@@ -25,11 +25,11 @@ Detects connections to out-of-band testing (OAST) and disposable callback servic
 
 ## Search Query
 ```kql
-let CallbackDomains=dynamic(["webhook.site","interact.sh","oast.pro","oast.live","burpcollaborator.net","requestbin.net","pipedream.net"]);
+let CallbackDomains=dynamic(["webhook.site","interact.sh","oast.pro","oast.live","burpcollaborator.net","oastify.com","oast.site","oast.online","oast.fun","oast.me","requestbin.net","pipedream.net"]);
 DeviceNetworkEvents
 | where Timestamp > ago(7d)
 | where isnotempty(RemoteUrl)
-| extend Host=tolower(tostring(parse_url(strcat("https://",RemoteUrl)).Host))
+| extend Host=tolower(tostring(parse_url(iff(RemoteUrl matches regex @"(?i)^https?://", RemoteUrl, strcat("https://",RemoteUrl))).Host))
 | where Host has_any (CallbackDomains) or RemoteUrl has_any (CallbackDomains)
 | summarize Connections=count(), UniqueDestinations=dcount(RemoteUrl), SampleDestinations=make_set(RemoteUrl,10) by DeviceId, DeviceName, InitiatingProcessFileName, InitiatingProcessAccountName, bin(Timestamp,1h)
 | order by Connections desc

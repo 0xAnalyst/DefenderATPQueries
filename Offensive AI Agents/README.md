@@ -13,7 +13,7 @@ The report documents ARTEX artifacts and behaviors including `artex-probe-*` / `
 | OAI-001 | [ARTEX-like Incremental Probe Artifacts](Execution_ARTEX_Probe_Artifacts.md) | High | `DeviceFileEvents, DeviceProcessEvents` | T1036 |
 | OAI-002 | [Unusually Fast Process Bursts with Diverse Commands](Execution_Rapid_Process_Bursts.md) | Medium | `DeviceProcessEvents` | T1059 |
 | OAI-003 | [Command-Output Transfer to Webhooks](Exfiltration_Webhook_Command_Output.md) | High | `DeviceProcessEvents, DeviceNetworkEvents` | T1041 |
-| OAI-004 | [Multiple Unique Webhook Endpoints Contacted by One Device](Exfiltration_Rotating_Webhook_Destinations.md) | High | `DeviceNetworkEvents` | T1041 |
+| OAI-004 | [Multiple Unique Webhook Endpoints Contacted by One Device](Exfiltration_Rotating_Webhook_Destinations.md) | High | `DeviceProcessEvents, DeviceNetworkEvents` | T1041 |
 | OAI-005 | [Rapid AD Reconnaissance Utility and Script Invocation](Discovery_Automated_AD_Recon.md) | High | `DeviceProcessEvents` | T1087 |
 | OAI-006 | [Potential Kerberoasting and DCSync Command Patterns](CredentialAccess_Kerberoast_DCSync_Commands.md) | High | `DeviceProcessEvents` | T1558.003, T1003.006 |
 | OAI-007 | [Web Executable File Written by Server and Database Process](Persistence_Webshell_File_Drop.md) | High | `DeviceFileEvents` | T1505.003 |

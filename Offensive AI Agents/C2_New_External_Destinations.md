@@ -9,7 +9,7 @@ Detects devices that suddenly contact five or more external domains they have no
 - **Provenance:** Defender-authored behavioral extrapolation
 
 ## Detection Logic
-- Builds a 14-day baseline of `DeviceId` + `RemoteUrl` pairs from `DeviceNetworkEvents` (public IPs only).
+- Builds a 14-day baseline of `DeviceId` + `RemoteUrl` pairs from `DeviceNetworkEvents` (`RemoteIPType == "Public"`, so IPv6 destinations are included).
 - Left-anti joins the last 24 hours against that baseline.
 - Alerts on **≥ 5 new domains** per device/account in a 1-hour bin.
 
@@ -29,11 +29,11 @@ let baseline=14d;
 let recent=1d;
 let older=DeviceNetworkEvents
 | where Timestamp between (ago(baseline)..ago(recent))
-| where isnotempty(RemoteUrl) and ipv4_is_private(RemoteIP) == false
+| where isnotempty(RemoteUrl) and RemoteIPType == "Public"
 | summarize by DeviceId, RemoteUrl;
 DeviceNetworkEvents
 | where Timestamp > ago(recent)
-| where isnotempty(RemoteUrl) and ipv4_is_private(RemoteIP) == false
+| where isnotempty(RemoteUrl) and RemoteIPType == "Public"
 | join kind=leftanti older on DeviceId, RemoteUrl
 | summarize Connections=count(), NewDomains=dcount(RemoteUrl), DomainExamples=make_set(RemoteUrl,15), Processes=make_set(InitiatingProcessFileName,8) by DeviceId, DeviceName, InitiatingProcessAccountName, bin(Timestamp,1h)
 | where NewDomains >= 5
