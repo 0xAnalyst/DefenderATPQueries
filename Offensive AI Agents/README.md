@@ -1,4 +1,4 @@
-# Offensive AI Agents — Hunting Queries
+# Offensive AI Agents - Hunting Queries
 
 ## Description
 This folder contains Microsoft Defender XDR hunting queries for **agentic offensive frameworks** — ARTEX, PentAGI, CAIRN, Hexstrike and similar tools where an LLM-driven agent plans and runs the attack. The rules focus on behaviors that span attack stages (discovery → permission probing → credential access → webshell → webhook egress) rather than trying to prove that an AI was involved. No query can identify an AI agent with certainty.
