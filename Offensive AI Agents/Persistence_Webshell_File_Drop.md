@@ -9,7 +9,7 @@ Detects `.jsp`, `.jspx`, `.aspx`, `.ashx` and `.php` files written by web-server
 - **Provenance:** Report-documented behavior
 
 ## Detection Logic
-- Filters `DeviceFileEvents` for web-executable extensions.
+- Filters `DeviceFileEvents` to `FileCreated`, `FileModified` and `FileRenamed` (deletions are ignored) for web-executable extensions.
 - Requires the writing process to be a web/database server (`w3wp`, `java`, `tomcat`, `httpd`, `nginx`, `php-fpm`, `mysqld`, `sqlservr`) **or** the path to be a web root (`wwwroot`, `webapps`, `htdocs`, `inetpub`, `public_html`).
 
 ## Relevant Tables
@@ -27,6 +27,7 @@ Detects `.jsp`, `.jspx`, `.aspx`, `.ashx` and `.php` files written by web-server
 let serverParents=dynamic(["w3wp.exe","java.exe","javaw.exe","tomcat.exe","httpd.exe","apache2","nginx","php-fpm","mysqld.exe","mysqld","sqlservr.exe"]);
 DeviceFileEvents
 | where Timestamp > ago(7d)
+| where ActionType in ("FileCreated","FileModified","FileRenamed")
 | where FileName matches regex @"(?i)\.(jsp|jspx|aspx|ashx|php)$"
 | where set_has_element(serverParents, tolower(InitiatingProcessFileName)) or FolderPath has_any ("wwwroot","webapps","htdocs","inetpub","public_html")
 | project Timestamp, DeviceId, DeviceName, FileName, FolderPath, ActionType, InitiatingProcessFileName, InitiatingProcessCommandLine, InitiatingProcessAccountName

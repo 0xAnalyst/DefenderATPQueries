@@ -10,8 +10,8 @@ Correlates AD discovery commands with `webhook.site` connections on the same dev
 
 ## Detection Logic
 - Summarizes AD-discovery command lines per device from `DeviceProcessEvents`.
-- Summarizes `webhook.site` connections per device from `DeviceNetworkEvents`.
-- Inner-joins on `DeviceId` and requires **≥ 3 recon commands** and the first webhook connection to occur between the first recon command and 30 minutes after the last.
+- Keeps every `webhook.site` connection from `DeviceNetworkEvents` (not just the first), so earlier benign webhook use on the device does not hide the attack.
+- Inner-joins on `DeviceId` and requires **≥ 3 recon commands** and at least one webhook connection between the first recon command and 30 minutes after the last; only in-window connections are counted.
 
 ## Relevant Tables
 - `DeviceProcessEvents`
@@ -35,11 +35,12 @@ let Recon=DeviceProcessEvents
 let Egress=DeviceNetworkEvents
 | where Timestamp > ago(lookback)
 | where RemoteUrl contains "webhook.site"
-| summarize EgressCount=count(), EgressFirst=min(Timestamp), EgressLast=max(Timestamp), EgressUrls=make_set(RemoteUrl,8) by DeviceId;
+| project DeviceId, EgressTime=Timestamp, RemoteUrl;
 Recon
+| where ReconCount >= 3
 | join kind=inner Egress on DeviceId
-| where ReconCount >= 3 and EgressCount >= 1
-| where EgressFirst between (ReconFirst .. (ReconLast + 30m))
+| where EgressTime between (ReconFirst .. (ReconLast + 30m))
+| summarize EgressCount=count(), EgressFirst=min(EgressTime), EgressLast=max(EgressTime), EgressUrls=make_set(RemoteUrl,8), ReconCommands=take_any(ReconCommands) by DeviceId, DeviceName, ReconCount, ReconFirst, ReconLast
 | project DeviceId, DeviceName, ReconCount, ReconFirst, ReconLast, EgressCount, EgressFirst, EgressLast, ReconCommands, EgressUrls
 | order by EgressFirst desc
 ```

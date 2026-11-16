@@ -9,6 +9,7 @@ Detects a single process connecting to many internal hosts across administrative
 - **Provenance:** Defender-authored behavioral extrapolation
 
 ## Detection Logic
+- Keeps only outbound connection events (`ConnectionSuccess`, `ConnectionAttempt`, `ConnectionFailed`) so servers accepting inbound connections are not mistaken for scanners.
 - Filters `DeviceNetworkEvents` to private `RemoteIP` values on a list of high-value ports.
 - Groups by device, initiating process and account in 5-minute bins.
 - Alerts on **≥ 12 distinct hosts** across **≥ 3 distinct ports**.
@@ -28,6 +29,7 @@ Detects a single process connecting to many internal hosts across administrative
 let lookback=24h;
 DeviceNetworkEvents
 | where Timestamp > ago(lookback)
+| where ActionType in ("ConnectionSuccess","ConnectionAttempt","ConnectionFailed")
 | where ipv4_is_private(RemoteIP) == true
 | where RemotePort in (22,88,135,139,389,445,636,1433,1521,3306,3389,5432,5985,5986,8080,8443)
 | summarize Connections=count(), DistinctHosts=dcount(RemoteIP), DistinctPorts=dcount(RemotePort), Ports=make_set(RemotePort,20), Targets=make_set(RemoteIP,12) by DeviceId, DeviceName, InitiatingProcessFileName, InitiatingProcessAccountName, bin(Timestamp,5m)
